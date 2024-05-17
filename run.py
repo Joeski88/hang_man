@@ -1,3 +1,6 @@
+import random
+from words import words
+
 ### Welcome message
 def main():
     print(f"""
