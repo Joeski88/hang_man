@@ -1,5 +1,12 @@
-import random
+import random, string
 from words import words
+from colorama import init, Fore, Back, Style
+init(autoreset=True)
+
+punct = string.punctuation
+numbers = "0123456789"
+
+invalid_chars = punct + numbers
 
 # testflag for debugging
 TESTFLAG = False
@@ -10,7 +17,13 @@ def testWord(randomWord, TESTFLAG):
 
 def testWrongGuess(total, TESTFLAG):
     if TESTFLAG == True:        
-        print("Amountoftimewrong", total)
+        print("Amountoftimeswrong", total)
+
+def checkValid(char):
+    if char in invalid_chars:
+        return False
+    else:
+        return True
 
 def print_hangman(wrong):
     if(wrong == 1):
@@ -103,9 +116,12 @@ def run():
     while(True):
         ## ADDED
         if amount_of_times_wrong >= 9:
-            print("\nGAME OVER!")
+            print(Fore.RED + "\nGAME OVER! :( ")
+            print("Your word was...")
+            print(randomWord)
             break
-        print("\nLetters guessed so far:\n ")
+        if len(current_letters_guessed) >= 1:
+            print("\nLetters guessed so far:\n ")
         for letter in current_letters_guessed:
             print(letter, end=" ")
         ### ADDED
@@ -115,6 +131,11 @@ def run():
 
         ### prompt for user input
         letterGuessed = input("\nGuess a letter: \n")
+        
+        isValid = checkValid(letterGuessed)
+        if not isValid: 
+            print("Valid characters are A-Z & a-z")
+            run()
 
         ### User is right
         for current_guess_index in range(length_of_word_to_guess):
@@ -147,15 +168,15 @@ def run():
 ### Welcome message
     def main():
         print(f"""
---------------------------------------------------------------------------------
-            _   _    _    _   _  ____ __  __    _    _   _ _ 
-            | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |
-            | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| | |
-            |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|
-            |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)
+-------------------------------------------------------------------------------\n
+             _   _    _    _   _  ____ __  __    _    _   _ _ \n
+            | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |\n
+            | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| | |\n
+            |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|\n
+            |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)\n
 
---------------------------------------------------------------------------------
-    """)
+--------------------------------------------------------------------------------\n
+""")
 
 ### Start menu for user
 choice = ""
@@ -168,11 +189,11 @@ while True:
         print("5) Exit Game\n")
 
         choice = input("Menu Select: \n")
-
         choice = choice.strip()
         if (choice == "1"):
                 print("\nLet's Playyyyyyy!!!\n")
                 run()
+
         elif (choice == "2"):
                 print("\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
         elif(choice == "5"):
