@@ -24,7 +24,9 @@ def checkValid(char):
         return False
     else:
         return True
-
+"""
+Hangman terminal visuals
+"""
 def print_hangman(wrong):
     if(wrong == 1):
         print("\n+=====+")
@@ -76,6 +78,11 @@ def print_hangman(wrong):
         print(" / \   |")
         print("  ======")
 
+"""
+main game loop and counter
+"""
+
+# counter
 def printWord(randomWord, guessedLetters):
     counter=0
     rightLetters=0
@@ -88,6 +95,7 @@ def printWord(randomWord, guessedLetters):
         counter += 1
     return rightLetters
 
+# prints underscores instead of the letters of random word
 def printLines(randomWord):
     print("\r")
     for char in randomWord:
@@ -96,7 +104,7 @@ def printLines(randomWord):
 def getWord():
     # pick a random word from list
     randomWord = random.choice(words)
-
+    # testflag for debugging. change to true at the top of the page to use
     testWord(randomWord, TESTFLAG)
     return randomWord
     # Runs the game
@@ -113,6 +121,7 @@ def run():
     for x in randomWord:
         print("_", end=" ")
 
+    # while loop for all possible game endings
     while(True):
         ## ADDED
         if amount_of_times_wrong >= 9:
@@ -167,6 +176,8 @@ def run():
 
 ### Welcome message
     def main():
+        
+        
         print(f"""
 -------------------------------------------------------------------------------\n
              _   _    _    _   _  ____ __  __    _    _   _ _ \n
@@ -197,7 +208,8 @@ while True:
         elif (choice == "2"):
                 print("\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
         elif(choice == "5"):
-                break
+                print("Thank you for playing!!!")
+                break                
         else:
             print("Invalid Choice, Please Try Again.")
 
