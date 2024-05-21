@@ -95,7 +95,6 @@ def printWord(randomWord, guessedLetters):
         counter += 1
     return rightLetters
 
-# prints underscores instead of the letters of random word
 def printLines(randomWord):
     print("\r")
     for char in randomWord:
@@ -117,33 +116,33 @@ def run():
     current_letters_right = 0
 
     amount_of_times_wrong = 0
-
+# prints underscores instead of the letters of random word
     for x in randomWord:
-        print("_", end=" ")
+        print(Fore.GREEN + "_", end=" ")
 
     # while loop for all possible game endings
     while(True):
         ## ADDED
         if amount_of_times_wrong >= 9:
             print(Fore.RED + "\nGAME OVER! :( ")
-            print("Your word was...")
-            print(randomWord)
+            print(Fore.RED + "Your word was...")
+            print(Fore.YELLOW + randomWord)
             break
         if len(current_letters_guessed) >= 1:
-            print("\nLetters guessed so far:\n ")
+            print(Fore.YELLOW + "\nLetters guessed so far:\n ")
         for letter in current_letters_guessed:
-            print(letter, end=" ")
+            print(Fore.RED + letter, end=" ")
         ### ADDED
         if current_letters_right >= length_of_word_to_guess:
-            print("\nYOU WONNN!")
+            print(Fore.CYAN + "\nYOU WONNN!")
             break
 
         ### prompt for user input
-        letterGuessed = input("\nGuess a letter: \n")
+        letterGuessed = input(Fore.YELLOW + "\nGuess a letter: \n")
         
         isValid = checkValid(letterGuessed)
         if not isValid: 
-            print("Valid characters are A-Z & a-z")
+            print(Fore.GREEN + "Valid characters are A-Z & a-z")
             run()
 
         ### User is right
@@ -193,25 +192,25 @@ def run():
 choice = ""
 
 while True:
-        print("\n1) Play Game")
-        print("2) Rules")
-        print("3) Language Select Mode")
-        print("4) Multiplayer")
-        print("5) Exit Game\n")
+        print(Fore.GREEN + "\n1) Play Game")
+        print(Fore.YELLOW + "2) Rules")
+        print(Fore.RED + "3) Language Select Mode")
+        print(Fore.CYAN + "4) Multiplayer")
+        print(Fore.BLUE + "5) Exit Game\n")
 
-        choice = input("Menu Select: \n")
+        choice = input(Fore.GREEN + "Menu Select: \n")
         choice = choice.strip()
         if (choice == "1"):
-                print("\nLet's Playyyyyyy!!!\n")
+                print(Fore.YELLOW + Back.RED + "\nLet's Playyyyyyy!!!\n")
                 run()
 
         elif (choice == "2"):
-                print("\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
+                print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
         elif(choice == "5"):
-                print("Thank you for playing!!!")
+                print(Fore.GREEN + "Thank you for playing!!!")
                 break                
         else:
-            print("Invalid Choice, Please Try Again.")
+            print(Fore.RED + "Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__": 
