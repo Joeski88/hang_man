@@ -138,7 +138,7 @@ def run():
             break
 
         ### prompt for user input
-        letterGuessed = input(Fore.YELLOW + "\nGuess a letter: \n")
+        letterGuessed = input(Fore.RED + "\nGuess a letter: \n") ######## BUGHERE color issue. makes first letter of random word change color too.
         
         isValid = checkValid(letterGuessed)
         if not isValid: 

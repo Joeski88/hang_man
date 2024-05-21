@@ -208,10 +208,29 @@ The flowchart represents the logic of the application:
     ```
 
 
-3. Invalid escape sequence, syntax warning. characters being used for the handman visual.
+3. Invalid escape sequence, syntax warning. characters being used for the hangman visual and welcome game title.
 
     - *Solutions:* ?????????????
 
+4. Main not being defined when you try to exit the game. 
+    ```python
+    1) Play Game
+    2) Rules
+    3) Language Select Mode
+    4) Multiplayer
+    5) Exit Game
+
+    Menu Select: 
+    5
+    Thank you for playing!!!
+    Traceback (most recent call last):
+    File "/workspace/hang_man/run.py", line 217, in <module>
+        main()
+NameError: name 'main' is not defined. Did you mean: 'min'?        ^^^^```
+
+    - *Solution:* 
+
+5. if you press enter without any input in "guess a letter" input, it resets the game and picks a new random word.
 + **Unsolved bugs**
 
 ---
