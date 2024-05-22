@@ -35,7 +35,6 @@ def print_hangman(wrong):
                         |
                         |
                         |""")
-
     elif(wrong == 3):
         print(f"""\n+====+
                         |
@@ -125,8 +124,8 @@ def run():
     while(True):
         ## ADDED
         if amount_of_times_wrong >= 9:
-            print(Fore.RED + "\n    GAME OVER! :( ")
-            print(Fore.RED + "\n    Your word was...")
+            print(Fore.RED + "\n GAME OVER! :( ")
+            print(Fore.RED + "\n Your word was...")
             print(Fore.YELLOW + randomWord)
             break
         if len(current_letters_guessed) >= 1:
@@ -135,11 +134,11 @@ def run():
             print(Fore.RED + letter, end="\n ")
         ### ADDED
         if current_letters_right >= length_of_word_to_guess:
-            print(Fore.CYAN + "\n   YOU WONNN!")
+            print(Fore.CYAN + "\n YOU WONNN!")
             break
 
         ### prompt for user input
-        letterGuessed = input(Fore.RED + "\n    Guess a letter: \n") ######## BUGHERE color issue. makes first letter of random word change color too.
+        letterGuessed = input("\n Guess a letter: \n") ######## BUGHERE color issue. makes first letter of random word change color too.
         
         isValid = checkValid(letterGuessed)
         if not isValid: 
@@ -193,9 +192,9 @@ def run():
 choice = ""
 
 while True:
-        print(Fore.GREEN + "\n  1) Play Game")
-        print(Fore.YELLOW + "   2) Rules")
-        print(Fore.RED + "  3) Language Select Mode")
+        print(Fore.GREEN + "\n 1) Play Game")
+        print(Fore.YELLOW + " 2) Rules")
+        print(Fore.RED + " 3) Language Select Mode")
         print(Fore.CYAN + " 4) Multiplayer")
         print(Fore.BLUE + " 5) Exit Game\n")
 
