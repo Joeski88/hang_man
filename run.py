@@ -118,7 +118,7 @@ def run():
     amount_of_times_wrong = 0
 # prints underscores instead of the letters of random word
     for x in randomWord:
-        print(Fore.GREEN + "_", end=" ")
+        print(Fore.RED + Back.WHITE + " _", end=" ")
 
     # while loop for all possible game endings
     while(True):
@@ -131,7 +131,7 @@ def run():
         if len(current_letters_guessed) >= 1:
             print(Fore.YELLOW + "\n Letters guessed so far:\n ")
         for letter in current_letters_guessed:
-            print(Fore.RED + letter, end="\n ")
+            print(Fore.RED + letter, end="  ")
         ### ADDED
         if current_letters_right >= length_of_word_to_guess:
             print(Fore.CYAN + "\n YOU WONNN!")
@@ -198,7 +198,7 @@ while True:
         print(Fore.CYAN + " 4) Multiplayer")
         print(Fore.BLUE + " 5) Exit Game\n")
 
-        choice = input(Fore.GREEN + "   Menu Select: \n")
+        choice = input(Fore.GREEN + " Menu Select: \n")
         choice = choice.strip()
         if (choice == "1"):
                 print(Fore.YELLOW + Back.RED + "\n  Let's Playyyyyyy!!!\n")
@@ -207,10 +207,10 @@ while True:
         elif (choice == "2"):
                 print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
         elif(choice == "5"):
-                print(Fore.GREEN + "    Thank you for playing!!!")
+                print(Fore.GREEN + " Thank you for playing!!!")
                 break                
         else:
-            print(Fore.RED + "  Invalid Choice, Please Try Again.")
+            print(Fore.RED + " Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__": 
