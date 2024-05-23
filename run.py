@@ -69,20 +69,20 @@ def print_hangman(wrong):
     elif(wrong == 7):
         print(f"""\n+====+
                     O   |
-                   /|\  |
+                   /|\\ |
                         |
                     ======= """)
     elif(wrong == 8):
         print(f"""\n+====+
                     O   |
-                   /|\  |
+                   /|\\ |
                    /    |
                     ======= """)
     elif(wrong == 9):
         print(f"""\n+====+
                     O   |
-                   /|\  |
-                   / \  |
+                   /|\\ |
+                   / \\ |
                     ======= """)
 
 
@@ -196,35 +196,35 @@ def main():
     choice = ""
 
     print(f"""
---------------------------------------------------------------------------\n
+--------------------------------------------------------------------------
              _   _    _    _   _  ____ __  __    _    _   _ _ 
-            | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |
-            | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| | |
-            |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|
-            |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)
+            | | | |  / \\  | \\ | |/ ___|  \\/  |  / \\  | \\ | | |
+            | |_| | / _ \\ |  \\| | |  _| |\\/| | / _ \\ |  \\| | |
+            |  _  |/ ___ \\| |\\  | |_| | |  | |/ ___ \\| |\\  |_|
+            |_| |_/_/   \\_\\_| \\_|\\____|_|  |_/_/   \\_\\_| \\_(_)
 
---------------------------------------------------------------------------\n""")
+--------------------------------------------------------------------------""")
 
-while True:
-    print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
-    print(Fore.YELLOW + Back.RED + " 2) Rules")
-    print(Fore.YELLOW + Back.GREEN + " 3) Language Select Mode")
-    print(Fore.YELLOW + Back.CYAN +  " 4) Multiplayer")
-    print(Fore.YELLOW + Back.BLUE + " 5) Exit Game")
+    while True:
+        print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
+        print(Fore.YELLOW + Back.RED + " 2) Rules")
+        print(Fore.YELLOW + Back.GREEN + " 3) Language Select Mode")
+        print(Fore.YELLOW + Back.CYAN +  " 4) Multiplayer")
+        print(Fore.YELLOW + Back.BLUE + " 5) Exit Game")
 
-    choice = input(Fore.GREEN + " Menu Select: \n")
-    choice = choice.strip()
-    if (choice == "1"):
-                print(Fore.YELLOW + Back.RED + " Let's Playyyyyyy!!!")
-                run()
+        choice = input(Fore.GREEN + " Menu Select: \n")
+        choice = choice.strip()
+        if (choice == "1"):
+                    print(Fore.YELLOW + Back.RED + " Let's Playyyyyyy!!!")
+                    run()
 
-    elif (choice == "2"):
-                print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
-    elif(choice == "5"):
-                print(Fore.GREEN + " Thank you for playing!!!")
-                break                
-    else:
-            print(Fore.RED + " Invalid Choice, Please Try Again.")
+        elif (choice == "2"):
+                    print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
+        elif(choice == "5"):
+                    print(Fore.GREEN + " Thank you for playing!!!")
+                    break                
+        else:
+                print(Fore.RED + " Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__": 
