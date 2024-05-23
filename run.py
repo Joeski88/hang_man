@@ -5,8 +5,9 @@ init(autoreset=True)
 
 punct = string.punctuation
 numbers = "0123456789"
+blank = ""
 
-invalid_chars = punct + numbers
+invalid_chars = punct + numbers + blank
 
 # testflag for debugging
 TESTFLAG = False
@@ -35,8 +36,8 @@ Hangman terminal visuals
 
 
 def print_hangman(wrong):
- if(wrong == 1):
-    print(f"""\n+=====+""")
+    if(wrong == 1):
+        print(f"""\n+=====+""")
     elif(wrong == 2):
         print(f"""\n+====+
                         |
@@ -93,18 +94,18 @@ main game loop and counter
 
 # counter
 def printWord(randomWord, guessedLetters):
- counter=0
+    counter=0
 
 
 rightLetters=0
-    for char in randomWord:
+for char in randomWord:
         if(char in guessedLetters):
             print(randomWord[counter], end=' ')
             rightLetters += 1  # ADDED-to fix main bug, it wasn't being updated
         else:
             print(" ", end=" ")
         counter += 1
-    return rightLetters
+return rightLetters
 
 
 def printLines(randomWord):
@@ -199,8 +200,7 @@ def run():
             |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|\n
             |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)\n
 
---------------------------------------------------------------------------------\n
-""")
+--------------------------------------------------------------------------------\n""")
 
 
 # Start menu for user
@@ -222,10 +222,10 @@ while True:
 
     elif (choice == "2"):
                 print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
-        elif(choice == "5"):
+    elif(choice == "5"):
                 print(Fore.GREEN + " Thank you for playing!!!")
                 break                
-        else:
+    else:
             print(Fore.RED + " Invalid Choice, Please Try Again.")
 
 
