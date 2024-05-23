@@ -45,7 +45,7 @@ Users can quickly learn the rules of the game and then play along following the 
 
 ## How to play:
 
-  1. Click this *[link](https://the-maddest-madlib.onrender.com)* or copy this text: `https://the-maddest-madlib.onrender.com` and paste it in your browser's address bar. !!!!!!!!
+  1. Click this *[link](...........)* or copy this text: ............. and paste it in your browser's address bar. !!!!!!!!
   2. As soon as the page is loaded, click 'RUN PROGRAM'.
   3. select and option from the main menu.
   4. Learn the rules if needed.
@@ -56,7 +56,7 @@ Users can quickly learn the rules of the game and then play along following the 
   8. If you fail and get it wrong, the full hangman is displayed and "game over! :(" is printed, and the word you were trying to guess is revealed. 
   9. If you successfully guess the word, congratulations, you win!!!! The main menu pops up, and you can either choose to play again or leave the game.
 
-  Link to the game: *https://the-maddest-madlib.onrender.com*!!!!!!!!!!
+  Link to the game: *................*!!!!!!!!!!
 
 ---
 ## User Stories
@@ -210,7 +210,10 @@ The flowchart represents the logic of the application:
 
 3. Invalid escape sequence, syntax warning. characters being used for the hangman visual and welcome game title.
 
-    - *Solutions:* ?????????????
+    - *Solutions:* 
+    backlash "\" was used in may places, as its an escape sequence it was showing an error, I had to double all backslashes used to remove the error message.
+
+    SCREENSHOTS HERE!
 
 4. Main not being defined when you try to exit the game. 
     ```python
@@ -228,7 +231,7 @@ The flowchart represents the logic of the application:
         main()
 NameError: name 'main' is not defined. Did you mean: 'min'?        ^^^^```
 
-    - *Solution:* 
+    - *Solution:* Indentation mistake.
 
 5. if you press enter without any input in "guess a letter" input, it resets the game and picks a new random word.
 + **Unsolved bugs**
