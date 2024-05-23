@@ -5,9 +5,8 @@ init(autoreset=True)
 
 punct = string.punctuation
 numbers = "0123456789"
-blank = ""
 
-invalid_chars = punct + numbers + blank
+invalid_chars = punct + numbers
 
 # testflag for debugging
 TESTFLAG = False
@@ -37,7 +36,7 @@ Hangman terminal visuals
 
 def print_hangman(wrong):
     if(wrong == 1):
-        print(f"""\n+=====+""")
+        print("\n+=====+")
     elif(wrong == 2):
         print(f"""\n+====+
                         |
@@ -134,7 +133,7 @@ def run():
     amount_of_times_wrong = 0
 # prints underscores instead of the letters of random word
     for x in randomWord:
-        print(Fore.RED + Back.WHITE + " _", end=" ")
+        print(Fore.RED + Back.WHITE + "_", end=" ")
 
     # while loop for all possible game endings
     while(True):
@@ -154,7 +153,7 @@ def run():
             break
 
         # prompt for user input
-        letterGuessed = input("\n Guess a letter: \n")  # BUGHERE color issue.
+        letterGuessed = input("\n Guess a letter: \n")
 
         isValid = checkValid(letterGuessed)
         if not isValid: 
@@ -190,9 +189,9 @@ def run():
         #print([amount_of_times_wrong], current_letters_right, randomWord, (current_guess_index), letterGuessed, randomWord[current_guess_index] == letterGuessed)
 
 # Welcome message
-    def main():
+def main():
 
-        print(f"""
+    print(f"""
 --------------------------------------------------------------------------\n
              _   _    _    _   _  ____ __  __    _    _   _ _ \n
             | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |\n
