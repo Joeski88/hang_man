@@ -97,15 +97,15 @@ def printWord(randomWord, guessedLetters):
     counter=0
 
 
-rightLetters=0
-for char in randomWord:
+    rightLetters=0
+    for char in randomWord:
         if(char in guessedLetters):
             print(randomWord[counter], end=' ')
             rightLetters += 1  # ADDED-to fix main bug, it wasn't being updated
         else:
             print(" ", end=" ")
         counter += 1
-return rightLetters
+        return rightLetters
 
 
 def printLines(randomWord):
@@ -150,7 +150,7 @@ def run():
             print(Fore.RED + letter, end="  ")
         # ADDED
         if current_letters_right >= length_of_word_to_guess:
-            print(Fore.CYAN + "\n YOU WONNN!")
+            print(Fore.CYAN + Back.GREEN + "\n YOU WONNN!")
             break
 
         # prompt for user input
@@ -193,14 +193,14 @@ def run():
     def main():
 
         print(f"""
--------------------------------------------------------------------------------\n
+--------------------------------------------------------------------------\n
              _   _    _    _   _  ____ __  __    _    _   _ _ \n
             | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |\n
             | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| | |\n
             |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|\n
             |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)\n
 
---------------------------------------------------------------------------------\n""")
+--------------------------------------------------------------------------\n""")
 
 
 # Start menu for user
@@ -208,11 +208,11 @@ choice = ""
 
 
 while True:
-    print(Fore.GREEN + "\n 1) Play Game")
-    print(Fore.YELLOW + " 2) Rules")
-    print(Fore.RED + " 3) Language Select Mode")
-    print(Fore.CYAN + " 4) Multiplayer")
-    print(Fore.BLUE + " 5) Exit Game\n")
+    print(Fore.YELLOW + Back.MAGENTA + "\n 1) Play Game")
+    print(Fore.YELLOW + Back.RED + " 2) Rules")
+    print(Fore.YELLOW + Back.GREEN + " 3) Language Select Mode")
+    print(Fore.YELLOW + Back.CYAN +  " 4) Multiplayer")
+    print(Fore.YELLOW + Back.BLUE + " 5) Exit Game\n")
 
     choice = input(Fore.GREEN + " Menu Select: \n")
     choice = choice.strip()
