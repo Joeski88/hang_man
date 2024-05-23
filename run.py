@@ -189,29 +189,30 @@ def run():
         #print([amount_of_times_wrong], current_letters_right, randomWord, (current_guess_index), letterGuessed, randomWord[current_guess_index] == letterGuessed)
 
 # Welcome message
-def main():
+
 
     print(f"""
 --------------------------------------------------------------------------\n
-             _   _    _    _   _  ____ __  __    _    _   _ _ \n
-            | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |\n
-            | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| | |\n
-            |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|\n
-            |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)\n
+             _   _    _    _   _  ____ __  __    _    _   _ _ 
+            | | | |  / \  | \ | |/ ___|  \/  |  / \  | \ | | |
+            | |_| | / _ \ |  \| | |  _| |\/| | / _ \ |  \| | |
+            |  _  |/ ___ \| |\  | |_| | |  | |/ ___ \| |\  |_|
+            |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)
 
 --------------------------------------------------------------------------\n""")
 
 
+def main():
 # Start menu for user
-choice = ""
+    choice = ""
 
 
 while True:
-    print(Fore.YELLOW + Back.MAGENTA + "\n 1) Play Game")
+    print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
     print(Fore.YELLOW + Back.RED + " 2) Rules")
     print(Fore.YELLOW + Back.GREEN + " 3) Language Select Mode")
     print(Fore.YELLOW + Back.CYAN +  " 4) Multiplayer")
-    print(Fore.YELLOW + Back.BLUE + " 5) Exit Game\n")
+    print(Fore.YELLOW + Back.BLUE + " 5) Exit Game")
 
     choice = input(Fore.GREEN + " Menu Select: \n")
     choice = choice.strip()
