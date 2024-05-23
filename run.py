@@ -157,7 +157,7 @@ def run():
 
         isValid = checkValid(letterGuessed)
         if not isValid: 
-            print(Fore.GREEN + "Valid characters are A-Z & a-z")
+            print(Fore.GREEN + "Valid characters are A-Z & a-z, No special characters allowed")
             run()
 
         # User is right
@@ -191,6 +191,10 @@ def run():
 # Welcome message
 
 
+def main():
+# Start menu for user
+    choice = ""
+
     print(f"""
 --------------------------------------------------------------------------\n
              _   _    _    _   _  ____ __  __    _    _   _ _ 
@@ -200,12 +204,6 @@ def run():
             |_| |_/_/   \_\_| \_|\____|_|  |_/_/   \_\_| \_(_)
 
 --------------------------------------------------------------------------\n""")
-
-
-def main():
-# Start menu for user
-    choice = ""
-
 
 while True:
     print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
@@ -217,7 +215,7 @@ while True:
     choice = input(Fore.GREEN + " Menu Select: \n")
     choice = choice.strip()
     if (choice == "1"):
-                print(Fore.YELLOW + Back.RED + "\n  Let's Playyyyyyy!!!\n")
+                print(Fore.YELLOW + Back.RED + " Let's Playyyyyyy!!!")
                 run()
 
     elif (choice == "2"):
