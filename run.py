@@ -78,20 +78,20 @@ def print_hangman(wrong):
     elif(wrong == 7):
         print(f"""\n+====+
                     O   |
-                   /|\\ |
+                   /|\\     |
                         |
                     ======= """)
     elif(wrong == 8):
         print(f"""\n+====+
                     O   |
-                   /|\\ |
+                   /|\\  |
                    /    |
                     ======= """)
     elif(wrong == 9):
         print(f"""\n+====+
                     O   |
-                   /|\\ |
-                   / \\ |
+                   /|\\  |
+                   / \\  |
                     ======= """)
 
 
@@ -102,23 +102,35 @@ main game loop and counter
 
 # counter
 def printWord(randomWord, guessedLetters):
-    counter=0
+    # counter=0
     rightLetters=0
+    displayWord= ""
 
     for char in randomWord:
-        if(char in guessedLetters):
-            print(randomWord[counter], end=' ')
-            rightLetters += 1  # ADDED-to fix main bug, it wasn't being updated
+        if char in guessedLetters:
+            displayWord += char + ' '
+            rightLetters += 1
         else:
-            print(" ", end=" ")
-        counter += 1
+            displayWord += '_ '
+
+    # for char in randomWord:
+    #     if(char in guessedLetters):
+    #         print(randomWord[counter], end=' ')
+    #         rightLetters += 1  # ADDED-to fix main bug, it wasn't being updated
+    #     else:
+    #         print(" ", end=" ")
+    #     counter += 1
+    print(displayWord.strip())
     return rightLetters
 
 
 def printLines(randomWord):
     print("\r")
-    for char in randomWord:
+    for _ in randomWord:
         print("\u203E", end=" ")
+    print('\r')
+    # for char in randomWord:
+    #     print("\u203E", end=" ")
 
 
 def getWord():
@@ -134,11 +146,11 @@ def run():
     while(True):
         for player in players:
             print("\nYour turn %s!\n" %(player.name))
-            #printLines(player.randomWord)
-            for x in player.randomWord:
-                # prints underscores instead of the letters of random word
-                
-                print(Fore.RED + Back.WHITE + "_", end=" ")
+            # printLines(player.randomWord)
+            printWord(player.randomWord, player.current_letters_guessed)
+            # for x in player.randomWord:
+            #     # prints underscores instead of the letters of random word
+            #     print("_", end=" ")
 
             # while loop for all possible game endings
             # Game over state
@@ -151,7 +163,7 @@ def run():
 
             ### win state
             if player.current_letters_right >= player.length_of_word_to_guess:
-                print(Fore.CYAN + Back.GREEN + "\n YOU WONNN!")
+                print(Fore.CYAN + Back.GREEN + " YOU WONNN!")
                 main()
                 break
 
@@ -161,7 +173,7 @@ def run():
             for letter in player.current_letters_guessed:
                 print(Fore.RED + letter, end="  ")
 
-            # prompt for user input
+                # prompt for user input
             letterGuessed = input("\n Guess a letter: \n")
                 
             isValid = checkValid(letterGuessed)
@@ -188,6 +200,11 @@ def run():
                     player.current_letters_right = printWord(player.randomWord, player.current_letters_guessed)
                     testWrongGuess(player.amount_of_times_wrong, TESTFLAG)
 
+                if (player.randomWord == True):
+                    continue
+                elif (player.randomWord == False):
+                    continue
+
 
         #print([amount_of_times_wrong], current_letters_right, randomWord, (current_guess_index), letterGuessed, randomWord[current_guess_index] == letterGuessed)
 
@@ -208,6 +225,8 @@ def main():
 
 --------------------------------------------------------------------------""")
 
+    
+    
     while True:
         print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
         print(Fore.YELLOW + Back.RED + " 2) Rules")
@@ -226,13 +245,11 @@ def main():
             for p in range(player_num):
                 print("Enter player name:")
                 name = input()
-            
                 player = addPlayer(name)
-            
                 randomWord = getWord()
                 player.setWord(randomWord)
-            
-            run()
+                #print(randomWord)
+                run()
 
         elif (choice == "2"):
                     print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
