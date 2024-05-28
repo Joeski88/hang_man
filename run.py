@@ -105,7 +105,7 @@ def printWord(randomWord, guessedLetters):
     # counter=0
     rightLetters=0
     displayWord= ""
-
+# loop to print correct letters in word
     for char in randomWord:
         if char in guessedLetters:
             displayWord += char + ' '
@@ -155,15 +155,15 @@ def run():
             # while loop for all possible game endings
             # Game over state
             if player.amount_of_times_wrong >= 9:
-                print(Fore.RED + "\n GAME OVER! :( ")
-                print(Fore.RED + "\n Your word was...")
+                print(Fore.BLACK + Back.RED + " GAME OVER! :( ")
+                print(Fore.BLACK + Back.RED + " Your word was...")
                 print(Fore.YELLOW + player.randomWord)
                 main()
                 break
 
             ### win state
             if player.current_letters_right >= player.length_of_word_to_guess:
-                print(Fore.CYAN + Back.GREEN + " YOU WONNN!")
+                print(Fore.YELLOW + Back.GREEN + " YOU WONNN!")
                 main()
                 break
 
