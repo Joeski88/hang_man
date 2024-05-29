@@ -1,6 +1,9 @@
+import os
 import random, string
 from words import words
 from colorama import init, Fore, Back, Style
+
+next
 init(autoreset=True)
 
 from player import Player
@@ -15,22 +18,25 @@ invalid_chars = punct + numbers
 # testflag for debugging
 TESTFLAG = False
 
+def clearScreen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
+# function for adding player name
 def addPlayer(name):
     p = Player(name)
     players.append(p)
     return p
 
+# debugging testflag
 def testWord(randomWord, TESTFLAG):
     if TESTFLAG == True:
         print("WORD TO GUESS", randomWord)
-
 
 def testWrongGuess(total, TESTFLAG):
     if TESTFLAG == True:
         print("Amountoftimeswrong", total)
 
-
+# function for checking invalid characters
 def checkValid(char):
     if char in invalid_chars:
         return False
@@ -45,7 +51,7 @@ Hangman terminal visuals
 
 def print_hangman(wrong):
     if(wrong == 1):
-        print("\n+=====+")
+        print("+=====+")
     elif(wrong == 2):
         print(f"""\n+====+
                         |
@@ -78,7 +84,7 @@ def print_hangman(wrong):
     elif(wrong == 7):
         print(f"""\n+====+
                     O   |
-                   /|\\     |
+                   /|\\  |
                         |
                     ======= """)
     elif(wrong == 8):
@@ -102,36 +108,17 @@ main game loop and counter
 
 # counter
 def printWord(randomWord, guessedLetters):
-    # counter=0
     rightLetters=0
     displayWord= ""
-# loop to print correct letters in word
+    # loop to print correct letters in word
     for char in randomWord:
         if char in guessedLetters:
             displayWord += char + ' '
             rightLetters += 1
         else:
             displayWord += '_ '
-
-    # for char in randomWord:
-    #     if(char in guessedLetters):
-    #         print(randomWord[counter], end=' ')
-    #         rightLetters += 1  # ADDED-to fix main bug, it wasn't being updated
-    #     else:
-    #         print(" ", end=" ")
-    #     counter += 1
     print(displayWord.strip())
     return rightLetters
-
-
-def printLines(randomWord):
-    print("\r")
-    for _ in randomWord:
-        print("\u203E", end=" ")
-    print('\r')
-    # for char in randomWord:
-    #     print("\u203E", end=" ")
-
 
 def getWord():
     # pick a random word from list
@@ -145,14 +132,10 @@ def getWord():
 def run():
     while(True):
         for player in players:
+            clearScreen()
             print("\nYour turn %s!\n" %(player.name))
-            # printLines(player.randomWord)
             printWord(player.randomWord, player.current_letters_guessed)
-            # for x in player.randomWord:
-            #     # prints underscores instead of the letters of random word
-            #     print("_", end=" ")
 
-            # while loop for all possible game endings
             # Game over state
             if player.amount_of_times_wrong >= 9:
                 print(Fore.BLACK + Back.RED + " GAME OVER! :( ")
@@ -187,7 +170,6 @@ def run():
                 if player.randomWord[player.current_guess_index] == letterGuessed:
                     player.current_letters_guessed.append(letterGuessed)
                     player.current_letters_right = printWord(player.randomWord, player.current_letters_guessed)
-                    # print("Right", (randomWord[current_guess_index], current_guess_index, [current_letters_right]), length_of_word_to_guess, current_letters_right >= length_of_word_to_guess)          
                     break
             # User wrong
             if (player.randomWord[player.current_guess_index] != letterGuessed):
@@ -200,16 +182,9 @@ def run():
                     player.current_letters_right = printWord(player.randomWord, player.current_letters_guessed)
                     testWrongGuess(player.amount_of_times_wrong, TESTFLAG)
 
-                if (player.randomWord == True):
-                    continue
-                elif (player.randomWord == False):
-                    continue
-
-
-        #print([amount_of_times_wrong], current_letters_right, randomWord, (current_guess_index), letterGuessed, randomWord[current_guess_index] == letterGuessed)
-
-# Welcome message
-
+"""
+Main game menu loop
+"""
 
 def main():
 # Start menu for user
@@ -239,17 +214,18 @@ def main():
         if (choice == "1"):
             print("Let's Playyyyyyy!!!")
             print("Enter number of players:")
-        
+            players = [] # reset player array after each new game.         
             player_num = input()
             player_num = int(player_num)
+            print("Number of players:", player_num)
             for p in range(player_num):
                 print("Enter player name:")
                 name = input()
                 player = addPlayer(name)
                 randomWord = getWord()
                 player.setWord(randomWord)
-                #print(randomWord)
-                run()
+                
+            run() #THIS WAS INDENTED. stopping multiplayer working 
 
         elif (choice == "2"):
                     print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
