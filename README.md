@@ -1,8 +1,8 @@
 # HANGMAN!!!
 
-![Responsive Mockup](documentation/responsive_mockup.png)!!!!!!!!!!!!
+![Responsive Mockup](documentation/features/mockup.png)
 
-*The link to [Hangman!](https://the-maddest-madlib.onrender.com)*!!!!!!!!!!!
+*The link to [Hangman!](https://)*!!!!!!!!!!!
 
 Hangman is a Python terminal project whose primary purpose is to boost users' moods and provide entertainment, challenges and fun.
 
@@ -44,8 +44,7 @@ Users can quickly learn the rules of the game and then play along following the 
   
   - **When the program is loaded**
 
-  The user can see a title using Ascii art, "HANGMAN!" a menu appears and asks for the users input for menu selection.
-  ![loading Program](documentation/features/welcome_message_name.png) !!!!!!!!!!!
+  - The user can see a title using Ascii art, "HANGMAN!" a menu appears and asks for the users input for menu selection.
 
   - **When the user selects a menu option**
 
@@ -55,11 +54,9 @@ Users can quickly learn the rules of the game and then play along following the 
 
     2. Rules;
 
-    3. Language select;
+    3. Exit Game;
 
-    4. Exit Game;
-
-      ![loading Program](documentation/features/main_menu.png)!!!!!!!!!!!!!!!
+![loading Program](documentation/features/ascii_art.png)
 
   The user can enters a number into the terminal in relation to which menu option they wish to select.
 
@@ -68,18 +65,18 @@ Users can quickly learn the rules of the game and then play along following the 
   The user will see the main rules of the game which are required to be followed.
   Below the rules, the user can find the main menu where they may choose another option.
 
-  ![loading Program](documentation/features/rules.png)!!!!!!!!!!!!!!!!!!!!
+  ![loading Program](documentation/features/rules_feature.png)
 
   - **When the user choose's "Play Game"**
   
-  1. The game will start to run;
+  1. The game will ask how many players and the names, then will start to run;
 
   2. Keep adding letters as your guesses until you guess the word, or you "hangman!"
 
   3. Special characters and numbers are not allowed to be used, and will be greeted with an error message telling the user to select another option.
 
-  ![loading Program](documentation/features/after_input.png)!!!!!!!!!!!!!!!!!!!
-  ![loading Program](documentation/features/story.png)!!!!!!!!!!!!!!!!!!!!
+  ![loading Program](documentation/features/multi_feature.png)
+  ![loading Program](documentation/features/)!!!!!!!!!!!!!!!!!!!!
 
   - **When the user chose "Quit"**
 
@@ -93,7 +90,7 @@ Users can quickly learn the rules of the game and then play along following the 
 
 The flowchart represents the logic of the application:
 
-  ![Flash Card Page](documentation/flowchart_madlib.png)!!!!!!!!!!!!!!!!!!!!!!!!!!
+  ![Flash Card Page](documentation/features/flowchart.png)
 
 ---
 ## Technologies Used

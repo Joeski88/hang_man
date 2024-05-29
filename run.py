@@ -228,7 +228,7 @@ def main():
 
         elif (choice == "2"):
                     print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
-        elif(choice == "4"):
+        elif(choice == "3"):
                     print(Fore.GREEN + " Thank you for playing!!!")
                     break                
         else:
