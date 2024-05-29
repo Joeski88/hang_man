@@ -178,7 +178,7 @@ The flowchart represents the logic of the application:
     - *Solutions:* 
     backlash "\" was used in may places, as its an escape sequence it was showing an error, I had to double all backslashes used to remove the error message.
 
-    SCREENSHOTS HERE!
+    (documentation/bug_screenshots/invalid_escape_sequence_bug.png)
 
 4. Main not being defined when you try to exit the game. 
     ```python

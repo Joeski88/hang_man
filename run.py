@@ -205,9 +205,8 @@ def main():
     while True:
         print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
         print(Fore.YELLOW + Back.RED + " 2) Rules")
-        print(Fore.YELLOW + Back.GREEN + " 3) Language Select Mode")
-        #print(Fore.YELLOW + Back.CYAN +  " 4) Multiplayer")
-        print(Fore.YELLOW + Back.BLUE + " 4) Exit Game")
+        print(Fore.YELLOW + Back.GREEN + " 3) Exit Game")
+
 
         choice = input(Fore.GREEN + " Menu Select: \n")
         choice = choice.strip()
