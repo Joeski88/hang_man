@@ -1,17 +1,18 @@
-import os
-import random, string
+import os, random, string
 from words import words
 from colorama import init, Fore, Back, Style
+from time import sleep
 
-next
 init(autoreset=True)
 
 from player import Player
 
+global players
 players = []
 
 punct = string.punctuation
 numbers = "0123456789"
+tries = 9
 
 invalid_chars = punct + numbers
 
@@ -44,10 +45,7 @@ def checkValid(char):
         return True
 
 
-"""
-Hangman terminal visuals
-"""
-
+""" Hangman terminal visuals """
 
 def print_hangman(wrong):
     if(wrong == 1):
@@ -101,9 +99,7 @@ def print_hangman(wrong):
                     ======= """)
 
 
-"""
-main game loop and counter
-"""
+""" main game loop and counter """
 
 
 # counter
@@ -131,33 +127,42 @@ def getWord():
     # Runs the game
 def run():
     while(True):
-        for player in players:
-            clearScreen()
-            print("\nYour turn %s!\n" %(player.name))
-            printWord(player.randomWord, player.current_letters_guessed)
+        if len(players) == 0:
+            main()
+        
+        for p in range(len(players)):
+
+            current_player = players[p]
+            
+            print("\nYour turn %s!\n" %(current_player.name))
+            printWord(current_player.randomWord, current_player.current_letters_guessed)
+            
 
             # Game over state
-            if player.amount_of_times_wrong >= 9:
-                print(Fore.BLACK + Back.RED + " GAME OVER! :( ")
+            if current_player.amount_of_times_wrong >= tries:
+                current_player.GAME_OVER = True
+                print(Fore.BLACK + Back.RED + " GAME OVER! %s :( "%(current_player.name))
                 print(Fore.BLACK + Back.RED + " Your word was...")
-                print(Fore.YELLOW + player.randomWord)
-                main()
+                print(Fore.YELLOW + current_player.randomWord)
+                players.pop(p)
+                player.update_to_initial_state(self)
                 break
 
             ### win state
-            if player.current_letters_right >= player.length_of_word_to_guess:
+            if current_player.current_letters_right >= current_player.length_of_word_to_guess:
                 print(Fore.YELLOW + Back.GREEN + " YOU WONNN!")
+                player.update_to_initial_state(self)
                 main()
                 break
 
-            if len(player.current_letters_guessed) >= 1:
+            if len(current_player.current_letters_guessed) >= 1:
                 print(Fore.YELLOW + "\n Letters guessed so far:\n ")
 
-            for letter in player.current_letters_guessed:
+            for letter in current_player.current_letters_guessed:
                 print(Fore.RED + letter, end="  ")
 
                 # prompt for user input
-            letterGuessed = input("\n Guess a letter: \n")
+            letterGuessed = input("\n Guess a letter (attempts left=%d): \n" %(tries - current_player.amount_of_times_wrong))
                 
             isValid = checkValid(letterGuessed)
 
@@ -166,30 +171,31 @@ def run():
                 run()
 
             # User is right
-            for player.current_guess_index in range(player.length_of_word_to_guess):
-                if player.randomWord[player.current_guess_index] == letterGuessed:
-                    player.current_letters_guessed.append(letterGuessed)
-                    player.current_letters_right = printWord(player.randomWord, player.current_letters_guessed)
+            for current_player.current_guess_index in range(current_player.length_of_word_to_guess):
+                if current_player.randomWord[current_player.current_guess_index] == letterGuessed:
+                    current_player.current_letters_guessed.append(letterGuessed)
+                    current_player.current_letters_right = printWord(current_player.randomWord, current_player.current_letters_guessed)
                     break
             # User wrong
-            if (player.randomWord[player.current_guess_index] != letterGuessed):
-                if(player.current_letters_right < player.length_of_word_to_guess):
-                    player.amount_of_times_wrong += 1
-                    player.current_letters_guessed.append(letterGuessed)
+            if (current_player.randomWord[current_player.current_guess_index] != letterGuessed):
+                if(current_player.current_letters_right < current_player.length_of_word_to_guess):
+                    current_player.amount_of_times_wrong += 1
+                    current_player.current_letters_guessed.append(letterGuessed)
                     # Update drawing
-                    print_hangman(player.amount_of_times_wrong)
+                    print_hangman(current_player.amount_of_times_wrong)
                     # Print word
-                    player.current_letters_right = printWord(player.randomWord, player.current_letters_guessed)
-                    testWrongGuess(player.amount_of_times_wrong, TESTFLAG)
+                    current_player.current_letters_right = printWord(current_player.randomWord, current_player.current_letters_guessed)
+                    testWrongGuess(current_player.amount_of_times_wrong, TESTFLAG)
 
 """
 Main game menu loop
 """
 
 def main():
-# Start menu for user
+    players = [] # reset global player array after each new game. 
+    # Start menu for user
     choice = ""
-
+   
     print(f"""
 --------------------------------------------------------------------------
              _   _    _    _   _  ____ __  __    _    _   _ _ 
@@ -204,18 +210,18 @@ def main():
     
     while True:
         print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
-        print(Fore.YELLOW + Back.RED + " 2) Rules")
-        print(Fore.YELLOW + Back.GREEN + " 3) Exit Game")
-
+        print(Fore.YELLOW + Back.RED + " 2) Rules")        
+        print(Fore.YELLOW + Back.BLUE + " 3) Exit Game")
 
         choice = input(Fore.GREEN + " Menu Select: \n")
         choice = choice.strip()
         if (choice == "1"):
             print("Let's Playyyyyyy!!!")
-            print("Enter number of players:")
-            players = [] # reset player array after each new game.         
-            player_num = input()
+            print("Enter number of players: (1-3 max)")
+                    
+            player_num = input()                
             player_num = int(player_num)
+            
             print("Number of players:", player_num)
             for p in range(player_num):
                 print("Enter player name:")
@@ -224,7 +230,7 @@ def main():
                 randomWord = getWord()
                 player.setWord(randomWord)
                 
-            run() #THIS WAS INDENTED. stopping multiplayer working 
+            run() #THIS WAS INDENTED.
 
         elif (choice == "2"):
                     print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")

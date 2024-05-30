@@ -13,6 +13,7 @@ class Player():
         self.current_letters_right = 0
 
         self.amount_of_times_wrong = 0
+        self.GAME_OVER = False
         
     def setWord(self, randomWord):
         self.randomWord = randomWord
@@ -22,5 +23,5 @@ class Player():
         print (self.randomWord)
         return self.randomWord
 
-    
-        
+    def update_to_initial_state(self):
+        self.update_to_initial_state

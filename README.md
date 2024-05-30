@@ -76,7 +76,6 @@ Users can quickly learn the rules of the game and then play along following the 
   3. Special characters and numbers are not allowed to be used, and will be greeted with an error message telling the user to select another option.
 
   ![loading Program](documentation/features/multi_feature.png)
-  ![loading Program](documentation/features/)!!!!!!!!!!!!!!!!!!!!
 
   - **When the user chose "Quit"**
 
