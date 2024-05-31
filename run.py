@@ -145,13 +145,13 @@ def run():
                 print(Fore.BLACK + Back.RED + " Your word was...")
                 print(Fore.YELLOW + current_player.randomWord)
                 players.pop(p)
-                player.update_to_initial_state(self)
+                #player.update_to_initial_state(self)
                 break
 
             ### win state
             if current_player.current_letters_right >= current_player.length_of_word_to_guess:
                 print(Fore.YELLOW + Back.GREEN + " YOU WONNN!")
-                player.update_to_initial_state(self)
+                #player.update_to_initial_state(self)
                 main()
                 break
 
@@ -166,7 +166,7 @@ def run():
                 
             isValid = checkValid(letterGuessed)
 
-            if not isValid or letterGuessed == "": 
+            if not isValid or letterGuessed == " ": 
                 print(Fore.GREEN + "Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
@@ -187,9 +187,7 @@ def run():
                     current_player.current_letters_right = printWord(current_player.randomWord, current_player.current_letters_guessed)
                     testWrongGuess(current_player.amount_of_times_wrong, TESTFLAG)
 
-"""
-Main game menu loop
-"""
+""" Main game menu loop """
 
 def main():
     players = [] # reset global player array after each new game. 
@@ -205,7 +203,6 @@ def main():
             |_| |_/_/   \\_\\_| \\_|\\____|_|  |_/_/   \\_\\_| \\_(_)
 
 --------------------------------------------------------------------------""")
-
     
     
     while True:
