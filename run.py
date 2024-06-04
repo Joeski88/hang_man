@@ -144,14 +144,15 @@ def run():
                 print(Fore.BLACK + Back.RED + " GAME OVER! %s :( "%(current_player.name))
                 print(Fore.BLACK + Back.RED + " Your word was...")
                 print(Fore.YELLOW + current_player.randomWord)
-                players.pop(p)
                 #player.update_to_initial_state(self)
+                players.pop(p)
                 break
 
             ### win state
             if current_player.current_letters_right >= current_player.length_of_word_to_guess:
                 print(Fore.YELLOW + Back.GREEN + " YOU WONNN!")
                 #player.update_to_initial_state(self)
+                players.pop(p)
                 main()
                 break
 
@@ -213,21 +214,27 @@ def main():
         choice = input(Fore.GREEN + " Menu Select: \n")
         choice = choice.strip()
         if (choice == "1"):
-            print("Let's Playyyyyyy!!!")
+            
             print("Enter number of players: (1-3 max)")
                     
             player_num = input()                
             player_num = int(player_num)
             
-            print("Number of players:", player_num)
+            print(Fore.GREEN + "Number of players:", player_num)
             for p in range(player_num):
-                print("Enter player name:")
+                print(Fore.GREEN + "Enter player name:")
                 name = input()
                 player = addPlayer(name)
                 randomWord = getWord()
                 player.setWord(randomWord)
-                
-            run() #THIS WAS INDENTED.
+                print(Fore.GREEN + "Let's Playyyyyyy!!!")
+
+            # isValid = checkValid(player_num) 
+
+            #if not isValid or letterGuessed == " ": 
+                #print(Fore.GREEN + "Valid characters are A-Z & a-z, No special characters allowed")               
+            
+                run() #THIS WAS INDENTED.
 
         elif (choice == "2"):
                     print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
