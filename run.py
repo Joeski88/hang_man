@@ -52,57 +52,57 @@ def checkValid(char):
 
 def print_hangman(wrong):
     if(wrong == 1):
-        print("+=====+")
+        print(Fore.YELLOW + "+=====+")
     elif(wrong == 2):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                         |
                         |
                         |""")
     elif(wrong == 3):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                         |
                         |
                         |
                 +=======+ """)
     elif(wrong == 4):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                     O   |
                         |
                         |
                 +=======+ """)
     elif(wrong == 5):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                     O   |
                     |   |
                         |
                 +=======+ """)
     elif(wrong == 6):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                     O   |
                    /|   |
                         |
                 +=======+ """)
     elif(wrong == 7):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                     O   |
                    /|\\  |
                         |
                 +=======+ """)
     elif(wrong == 8):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                     O   |
                    /|\\  |
                    /    |
                 +=======+ """)
     elif(wrong == 9):
-        print(f"""\n
+        print(Fore.YELLOW + f"""\n
                    +====+
                     O   |
                    /|\\  |
