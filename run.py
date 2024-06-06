@@ -155,13 +155,13 @@ def run():
                 print(Fore.BLACK + Back.RED + "\n GAME OVER! %s :( "%(current_player.name))
                 print(Fore.BLACK + Back.RED + " Your word was...")
                 print(Fore.YELLOW + current_player.randomWord)
-                
                 players.pop(p)
                 break
 
             ### win state
             if current_player.current_letters_right >= current_player.length_of_word_to_guess:
                 print(Fore.YELLOW + Back.GREEN + "\n YOU WONNN!")
+                players.pop(p)
                 ####################################
                 mainMenu() # Call main menu
                 ####################################
@@ -179,7 +179,7 @@ def run():
             isValid = checkValid(letterGuessed)
 
             if not isValid or letterGuessed == "": 
-                print(Fore.BLACK + Back.RED + "\n Valid characters are A-Z & a-z, No special characters allowed")
+                print(Fore.BLACK + Back.RED + "\n       Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
             #### Check if already guessed ######
@@ -271,7 +271,7 @@ def mainMenu():
         print(Fore.WHITE + Back.RED + " 2) Rules")        
         print(Fore.WHITE + Back.BLUE + " 3) Exit Game")
 
-        choice = input(Fore.GREEN + " \n Menu Select: \n")
+        choice = input(Fore.GREEN + " \n Menu Select: (Make your selection by entering a number 1-3) \n")
         choice = choice.strip()
         
         #### Added validation to check enter key without valid input
@@ -289,7 +289,7 @@ def mainMenu():
                print(Fore.GREEN + "\n Thank you for playing!!!")
                break                
         else:
-               print(Fore.BLACK + Back.RED + "\n Invalid Choice, Please Try Again.")
+               print(Fore.BLACK + Back.RED + "\n Invalid Choice, Please Try Again.\n")
 
 
 if __name__ == "__main__":

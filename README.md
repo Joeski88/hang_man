@@ -207,7 +207,26 @@ NameError: name 'main' is not defined. Did you mean: 'min'?        ^^^^```
 
     # *Solution*
 
-    - ??????????
+         # Game over state
+            if current_player.amount_of_times_wrong >= tries:
+                current_player.GAME_OVER = True
+                print(Fore.BLACK + Back.RED + "\n GAME OVER! %s :( "%(current_player.name))
+                print(Fore.BLACK + Back.RED + " Your word was...")
+                print(Fore.YELLOW + current_player.randomWord)
+                players.pop(p) <--------
+                break
+
+            ### win state
+            if current_player.current_letters_right >= current_player.length_of_word_to_guess:
+                print(Fore.YELLOW + Back.GREEN + "\n YOU WONNN!")
+                players.pop(p) <---------
+                ####################################
+                mainMenu() # Call main menu
+                ####################################
+                break
+
+    - Added player.pop(p) to reset loop and clear data
+
 + **Unsolved bugs**
 
 ---
