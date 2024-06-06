@@ -145,7 +145,7 @@ def run():
 
             current_player = players[p]
             
-            print("\nYour turn %s!\n" %(current_player.name))
+            print(Fore.MAGENTA + "\n Your turn %s!\n" %(current_player.name))
             printWord(current_player.randomWord, current_player.current_letters_guessed)
             
 
@@ -161,7 +161,7 @@ def run():
 
             ### win state
             if current_player.current_letters_right >= current_player.length_of_word_to_guess:
-                print(Fore.YELLOW + Back.GREEN + " YOU WONNN!")
+                print(Fore.YELLOW + Back.GREEN + "\n YOU WONNN!")
                 ####################################
                 mainMenu() # Call main menu
                 ####################################
@@ -171,20 +171,20 @@ def run():
                 print(Fore.YELLOW + "\n Letters guessed so far:\n ")
 
             for letter in current_player.current_letters_guessed:
-                print(Fore.RED + letter, end="  ")
+                print(Fore.RED + letter, end="  \n")
 
             # prompt for user input
-            letterGuessed = input("\n Guess a letter (attempts left=%d): \n" %(tries - current_player.amount_of_times_wrong))
+            letterGuessed = input(Fore.BLUE + "\n Guess a letter (attempts left=%d): \n" %(tries - current_player.amount_of_times_wrong))
                 
             isValid = checkValid(letterGuessed)
 
             if not isValid or letterGuessed == "": 
-                print(Fore.GREEN + "Valid characters are A-Z & a-z, No special characters allowed")
+                print(Fore.GREEN + "\n Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
             #### Check if already guessed ######
             if letterGuessed in current_player.current_letters_guessed:
-                print("You already guessed '%s'" %(letterGuessed))
+                print("\n You already guessed '%s'" %(letterGuessed))
                 run()
             ####################################
                 
@@ -209,12 +209,12 @@ def run():
 ###### Added new function to get number of players
 
 def getNumberOfPlayers():
-    print("Enter number of players: (1-3 max)")
+    print("\n Enter number of players: (1-3 max)")
     player_num = input()
 
     ##### Added validation checks on number of players
     if player_num in punct or player_num == "":
-        print("Not a valid number! Please try again.")
+        print("\n Not a valid number! Please try again.")
         getNumberOfPlayers()
     ####################################
         
@@ -222,17 +222,17 @@ def getNumberOfPlayers():
 
     ##### Check number is in range of 1 to 3 and not less than 0
     if player_num <= 0:
-        print(Fore.RED + "The min number of players is 1! Try again.")
+        print(Fore.RED + "\n The min number of players is 1! Try again.")
         getNumberOfPlayers()
     ##### Check number is in range of 1 to 3 and not greater than 3
     elif player_num > 3:
-        print(Fore.RED + "The max number of players is 3! Try again.")
+        print(Fore.RED + "\n The max number of players is 3! Try again.")
         getNumberOfPlayers()
     ##############################################
     else:        
-        print(Fore.GREEN + "Number of players:", player_num)
+        print(Fore.GREEN + "\n Number of players:", player_num)
         for p in range(player_num):
-            print(Fore.GREEN + "Enter player name:")
+            print(Fore.GREEN + "\n Enter player name:")
             name = input()
 
             #### Remove white space from name on the left and right
@@ -245,7 +245,7 @@ def getNumberOfPlayers():
             player.setWord(randomWord)
 
         #### Corrected bug in multiplayer option 
-        print(Fore.GREEN + "Let's Playyyyyyy!!!")
+        print(Fore.GREEN + "\n Let's Playyyyyyy!!!")
         
         run() #THIS WAS INDENTED.
         ########################################
@@ -267,11 +267,11 @@ def mainMenu():
 --------------------------------------------------------------------------""")
 
     while True:
-        print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
-        print(Fore.YELLOW + Back.RED + " 2) Rules")        
-        print(Fore.YELLOW + Back.BLUE + " 3) Exit Game")
+        print(Fore.BLACK + Back.MAGENTA + " 1) Play Game")
+        print(Fore.BLACK + Back.RED + " 2) Rules")        
+        print(Fore.BLACK + Back.BLUE + " 3) Exit Game")
 
-        choice = input(Fore.GREEN + " Menu Select: \n")
+        choice = input(Fore.GREEN + " \n Menu Select: \n")
         choice = choice.strip()
         
         #### Added validation to check enter key without valid input
