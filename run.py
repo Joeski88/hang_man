@@ -168,13 +168,13 @@ def run():
                 break
 
             if len(current_player.current_letters_guessed) >= 1:
-                print(Fore.YELLOW + "\n Letters guessed so far:\n ")
+                print(Fore.YELLOW + "\n Letters guessed so far: \n")
 
             for letter in current_player.current_letters_guessed:
-                print(Fore.RED + letter, end="  \n")
+                print(Fore.RED + letter, end=" ")
 
             # prompt for user input
-            letterGuessed = input(Fore.BLUE + "\n Guess a letter (attempts left=%d): \n" %(tries - current_player.amount_of_times_wrong))
+            letterGuessed = input(Fore.BLUE + "\n Guess a letter (attempts left=%d): " %(tries - current_player.amount_of_times_wrong))
                 
             isValid = checkValid(letterGuessed)
 
@@ -267,9 +267,9 @@ def mainMenu():
 --------------------------------------------------------------------------""")
 
     while True:
-        print(Fore.BLACK + Back.MAGENTA + " 1) Play Game")
-        print(Fore.BLACK + Back.RED + " 2) Rules")        
-        print(Fore.BLACK + Back.BLUE + " 3) Exit Game")
+        print(Fore.WHITE + Back.MAGENTA + " 1) Play Game")
+        print(Fore.WHITE + Back.RED + " 2) Rules")        
+        print(Fore.WHITE + Back.BLUE + " 3) Exit Game")
 
         choice = input(Fore.GREEN + " \n Menu Select: \n")
         choice = choice.strip()
@@ -284,12 +284,12 @@ def mainMenu():
             ###############################
 
         elif (choice == "2"):
-               print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
+               print(Fore.CYAN + "\n 1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
         elif(choice == "3"):
-               print(Fore.GREEN + " Thank you for playing!!!")
+               print(Fore.GREEN + "\n Thank you for playing!!!")
                break                
         else:
-               print(Fore.RED + " Invalid Choice, Please Try Again.")
+               print(Fore.RED + "\n Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__":
