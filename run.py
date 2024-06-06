@@ -152,7 +152,7 @@ def run():
             # Game over state
             if current_player.amount_of_times_wrong >= tries:
                 current_player.GAME_OVER = True
-                print(Fore.BLACK + Back.RED + " GAME OVER! %s :( "%(current_player.name))
+                print(Fore.BLACK + Back.RED + "\n GAME OVER! %s :( "%(current_player.name))
                 print(Fore.BLACK + Back.RED + " Your word was...")
                 print(Fore.YELLOW + current_player.randomWord)
                 
@@ -179,7 +179,7 @@ def run():
             isValid = checkValid(letterGuessed)
 
             if not isValid or letterGuessed == "": 
-                print(Fore.GREEN + "\n Valid characters are A-Z & a-z, No special characters allowed")
+                print(Fore.BLACK + Back.RED + "\n Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
             #### Check if already guessed ######
@@ -214,7 +214,7 @@ def getNumberOfPlayers():
 
     ##### Added validation checks on number of players
     if player_num in punct or player_num == "":
-        print("\n Not a valid number! Please try again.")
+        print(Fore.BLACK + Back.RED + "\n Not a valid number! Please try again.")
         getNumberOfPlayers()
     ####################################
         
@@ -222,11 +222,11 @@ def getNumberOfPlayers():
 
     ##### Check number is in range of 1 to 3 and not less than 0
     if player_num <= 0:
-        print(Fore.RED + "\n The min number of players is 1! Try again.")
+        print(Fore.BLACK + Back.RED + "\n The min number of players is 1! Try again.")
         getNumberOfPlayers()
     ##### Check number is in range of 1 to 3 and not greater than 3
     elif player_num > 3:
-        print(Fore.RED + "\n The max number of players is 3! Try again.")
+        print(Fore.BLACK + Back.RED + "\n The max number of players is 3! Try again.")
         getNumberOfPlayers()
     ##############################################
     else:        
@@ -289,7 +289,7 @@ def mainMenu():
                print(Fore.GREEN + "\n Thank you for playing!!!")
                break                
         else:
-               print(Fore.RED + "\n Invalid Choice, Please Try Again.")
+               print(Fore.BLACK + Back.RED + "\n Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__":
