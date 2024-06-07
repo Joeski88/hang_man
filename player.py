@@ -15,6 +15,8 @@ class Player():
         self.amount_of_times_wrong = 0
         self.GAME_OVER = False
         
+        self.colours = {}
+        
     def setWord(self, randomWord):
         self.randomWord = randomWord
         self.length_of_word_to_guess = len(randomWord)
@@ -23,5 +25,5 @@ class Player():
         print (self.randomWord)
         return self.randomWord
 
-    def update_to_initial_state(self):
-        self.update_to_initial_state
+    def setColour(self, palette):
+        self.colours = palette

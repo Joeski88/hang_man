@@ -10,6 +10,21 @@ from player import Player
 global players
 players = []
 
+palettes = [{
+    'prompt': Fore.BLACK + Back.YELLOW,
+    'win': Fore.YELLOW + Back.CYAN,
+    'lose': Fore.RED + Back.BLACK
+},{
+    'prompt': Fore.YELLOW + Back.GREEN,
+    'win': Fore.YELLOW + Back.GREEN,
+    'lose': Fore.BLACK + Back.RED
+},{
+    'prompt': Fore.YELLOW + Back.GREEN,
+    'win': Fore.YELLOW + Back.GREEN,
+    'lose': Fore.BLACK + Back.RED
+}]
+
+
 ####################################
 punct = string.punctuation + " " # Capture whitespace.
 ####################################
@@ -52,57 +67,57 @@ def checkValid(char):
 
 def print_hangman(wrong):
     if(wrong == 1):
-        print(Fore.YELLOW + "+=====+")
+        print(f"\n                   +=====+")
     elif(wrong == 2):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                         |
                         |
                         |""")
     elif(wrong == 3):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                         |
                         |
                         |
                 +=======+ """)
     elif(wrong == 4):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                     O   |
                         |
                         |
                 +=======+ """)
     elif(wrong == 5):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                     O   |
                     |   |
                         |
                 +=======+ """)
     elif(wrong == 6):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                     O   |
                    /|   |
                         |
                 +=======+ """)
     elif(wrong == 7):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                     O   |
                    /|\\  |
                         |
                 +=======+ """)
     elif(wrong == 8):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                     O   |
                    /|\\  |
                    /    |
                 +=======+ """)
     elif(wrong == 9):
-        print(Fore.YELLOW + f"""\n
+        print(f"""\n
                    +====+
                     O   |
                    /|\\  |
@@ -142,49 +157,60 @@ def run():
             mainMenu()
         
         for p in range(len(players)):
-
+            # Add boundary between player goes/players
+            
+            print("\n %s %s %s " %("=" * 50," NEXT PLAYER ","=" * 50))
+            
             current_player = players[p]
             
-            print(Fore.MAGENTA + "\n Your turn %s!\n" %(current_player.name))
+            print(current_player.colours['prompt'] + "\nYour turn %s!" %(current_player.name))
             printWord(current_player.randomWord, current_player.current_letters_guessed)
             
 
             # Game over state
             if current_player.amount_of_times_wrong >= tries:
                 current_player.GAME_OVER = True
-                print(Fore.BLACK + Back.RED + "\n GAME OVER! %s :( "%(current_player.name))
-                print(Fore.BLACK + Back.RED + " Your word was...")
-                print(Fore.YELLOW + current_player.randomWord)
+                print(current_player.colours['lose'] + " GAME OVER! %s :( "%(current_player.name))
+                print(current_player.colours['lose'] + " Your word was...")
+                print(current_player.colours['prompt'] + current_player.randomWord)
+                
                 players.pop(p)
                 break
 
             ### win state
             if current_player.current_letters_right >= current_player.length_of_word_to_guess:
-                print(Fore.YELLOW + Back.GREEN + "\n YOU WONNN!")
+                print(current_player.colours['win'] + " YOU WONNN!")
                 players.pop(p)
+
+                ## Show player names and words if lost
+                for losing_player in players:
+                    print(losing_player.colours['lose'] + " %s, your word was..." %(losing_player.name))
+                    print(losing_player.colours['prompt'] + losing_player.randomWord)
+                
+                
                 ####################################
                 mainMenu() # Call main menu
                 ####################################
                 break
 
             if len(current_player.current_letters_guessed) >= 1:
-                print(Fore.YELLOW + "\n Letters guessed so far: \n")
+                print(current_player.colours['prompt'] + "\n Letters guessed so far: ")
 
             for letter in current_player.current_letters_guessed:
-                print(Fore.RED + letter, end=" ")
+                print(current_player.colours['prompt'] + letter, end="  ")
 
             # prompt for user input
-            letterGuessed = input(Fore.BLUE + "\n Guess a letter (attempts left=%d): " %(tries - current_player.amount_of_times_wrong))
+            letterGuessed = input(current_player.colours['prompt'] + "\n Guess a letter (attempts left=%d): " %(tries - current_player.amount_of_times_wrong))
                 
             isValid = checkValid(letterGuessed)
 
             if not isValid or letterGuessed == "": 
-                print(Fore.BLACK + Back.RED + "\n       Valid characters are A-Z & a-z, No special characters allowed")
+                print(current_player.colours['prompt'] + "Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
             #### Check if already guessed ######
             if letterGuessed in current_player.current_letters_guessed:
-                print("\n You already guessed '%s'" %(letterGuessed))
+                print(current_player.colours['prompt'] + "You already guessed '%s'" %(letterGuessed))
                 run()
             ####################################
                 
@@ -204,17 +230,18 @@ def run():
                     # Print word
                     current_player.current_letters_right = printWord(current_player.randomWord, current_player.current_letters_guessed)
                     testWrongGuess(current_player.amount_of_times_wrong, TESTFLAG)
-
+            
+            
 """ Main game menu loop """
 ###### Added new function to get number of players
 
 def getNumberOfPlayers():
-    print("\n Enter number of players: (1-3 max)")
+    print(Fore.GREEN + "Enter number of players: (1-3 max)")
     player_num = input()
 
     ##### Added validation checks on number of players
     if player_num in punct or player_num == "":
-        print(Fore.BLACK + Back.RED + "\n Not a valid number! Please try again.")
+        print("Not a valid number! Please try again.")
         getNumberOfPlayers()
     ####################################
         
@@ -222,17 +249,17 @@ def getNumberOfPlayers():
 
     ##### Check number is in range of 1 to 3 and not less than 0
     if player_num <= 0:
-        print(Fore.BLACK + Back.RED + "\n The min number of players is 1! Try again.")
+        print(Fore.RED + "The min number of players is 1! Try again.")
         getNumberOfPlayers()
     ##### Check number is in range of 1 to 3 and not greater than 3
     elif player_num > 3:
-        print(Fore.BLACK + Back.RED + "\n The max number of players is 3! Try again.")
+        print(Fore.RED + "The max number of players is 3! Try again.")
         getNumberOfPlayers()
     ##############################################
     else:        
-        print(Fore.GREEN + "\n Number of players:", player_num)
+        print(Fore.GREEN + "Number of players:" + Fore.WHITE, player_num)
         for p in range(player_num):
-            print(Fore.GREEN + "\n Enter player name:")
+            print(Fore.GREEN + "Enter player name:" + Fore.WHITE)
             name = input()
 
             #### Remove white space from name on the left and right
@@ -243,9 +270,11 @@ def getNumberOfPlayers():
             player = addPlayer(name)
             randomWord = getWord()
             player.setWord(randomWord)
+            
+            player.setColour(palettes[p])
 
         #### Corrected bug in multiplayer option 
-        print(Fore.GREEN + "\n Let's Playyyyyyy!!!")
+        print(Fore.GREEN + "Let's Playyyyyyy!!!")
         
         run() #THIS WAS INDENTED.
         ########################################
@@ -267,11 +296,11 @@ def mainMenu():
 --------------------------------------------------------------------------""")
 
     while True:
-        print(Fore.WHITE + Back.MAGENTA + " 1) Play Game")
-        print(Fore.WHITE + Back.RED + " 2) Rules")        
-        print(Fore.WHITE + Back.BLUE + " 3) Exit Game")
+        print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
+        print(Fore.YELLOW + Back.RED + " 2) Rules")        
+        print(Fore.YELLOW + Back.BLUE + " 3) Exit Game")
 
-        choice = input(Fore.GREEN + " \n Menu Select: (Make your selection by entering a number 1-3) \n")
+        choice = input(Fore.GREEN + " Menu Select: \n" + Fore.WHITE)
         choice = choice.strip()
         
         #### Added validation to check enter key without valid input
@@ -284,14 +313,15 @@ def mainMenu():
             ###############################
 
         elif (choice == "2"):
-               print(Fore.CYAN + "\n 1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
+               print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
         elif(choice == "3"):
-               print(Fore.GREEN + "\n Thank you for playing!!!")
+               print(Fore.GREEN + " Thank you for playing!!!")
                break                
         else:
-               print(Fore.BLACK + Back.RED + "\n Invalid Choice, Please Try Again.\n")
+               print(Fore.RED + " Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__":
     #### Refactored main() to mainMenu()
     mainMenu()
+
