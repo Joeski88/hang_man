@@ -11,17 +11,17 @@ global players
 players = []
 
 palettes = [{
-    'prompt': Fore.BLACK + Back.YELLOW,
+    'prompt': Fore.YELLOW,
     'win': Fore.YELLOW + Back.CYAN,
-    'lose': Fore.RED + Back.BLACK
+    'lose': Fore.RED + Back.BLACK,
 },{
-    'prompt': Fore.YELLOW + Back.GREEN,
+    'prompt': Fore.GREEN,
     'win': Fore.YELLOW + Back.GREEN,
-    'lose': Fore.BLACK + Back.RED
+    'lose': Fore.BLACK + Back.RED,
 },{
-    'prompt': Fore.YELLOW + Back.GREEN,
+    'prompt': Fore.BLUE,
     'win': Fore.YELLOW + Back.GREEN,
-    'lose': Fore.BLACK + Back.RED
+    'lose': Fore.BLACK + Back.RED,
 }]
 
 
@@ -159,7 +159,7 @@ def run():
         for p in range(len(players)):
             # Add boundary between player goes/players
             
-            print("\n %s %s %s " %("=" * 50," NEXT PLAYER ","=" * 50))
+            print("\n %s %s %s " %("=" * 20," NEXT PLAYER ","=" * 20))
             
             current_player = players[p]
             
