@@ -173,7 +173,6 @@ def run():
                 print(current_player.colours['lose'] + " GAME OVER! %s :( "%(current_player.name))
                 print(current_player.colours['lose'] + " Your word was...")
                 print(current_player.colours['prompt'] + current_player.randomWord)
-                
                 players.pop(p)
                 break
 
@@ -205,7 +204,7 @@ def run():
             isValid = checkValid(letterGuessed)
 
             if not isValid or letterGuessed == "": 
-                print(current_player.colours['prompt'] + "Valid characters are A-Z & a-z, No special characters allowed")
+                print(current_player.colours['prompt'] + Fore.RED + "Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
             #### Check if already guessed ######
@@ -241,7 +240,7 @@ def getNumberOfPlayers():
 
     ##### Added validation checks on number of players
     if player_num in punct or player_num == "":
-        print("Not a valid number! Please try again.")
+        print(Fore.RED + "Not a valid number! Please try again.")
         getNumberOfPlayers()
     ####################################
         

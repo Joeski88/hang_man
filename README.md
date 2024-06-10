@@ -136,7 +136,7 @@ The flowchart represents the logic of the application:
 
 1. Special characters and numbers were being read and allowed by the program.
 
-    # *Solutions:* 
+    # *Solution:* 
     
     - I defined a function that checked for "invalid chars" and provided a print statement saying "Valid characters are A-Z & a-z" if one is used.
 
@@ -156,7 +156,7 @@ The flowchart represents the logic of the application:
 
 2. The counter wasnt working, and a piece of the hangman was being added each time a letter was guessed, even if it was correctly part of the word.
 
-    # *Solutions:* 
+    # *Solution:* 
     
     - Added counter "rightLetters += 1" as it wasnt there the count wasnt being updated and stayed at 0.
 
@@ -178,7 +178,7 @@ The flowchart represents the logic of the application:
 
 3. Invalid escape sequence, syntax warning. characters being used for the hangman visual and welcome game title.
 
-    # *Solutions:*
+    # *Solution:*
 
     - Backslash "\" was used in many places, as its an escape sequence it was showing an error, I had to double all backslashes used to remove the error message.
 
