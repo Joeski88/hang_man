@@ -176,12 +176,12 @@ def run():
                 players.pop(p)
                 break
 
-            ### win state
+            # win state
             if current_player.current_letters_right >= current_player.length_of_word_to_guess:
                 print(current_player.colours['win'] + " YOU WONNN!")
                 players.pop(p)
 
-                ## Show player names and words if lost
+                # Show player names and words if lost
                 for losing_player in players:
                     print(losing_player.colours['lose'] + " %s, your word was..." %(losing_player.name))
                     print(losing_player.colours['prompt'] + losing_player.randomWord)
@@ -204,10 +204,11 @@ def run():
             isValid = checkValid(letterGuessed)
 
             if not isValid or letterGuessed == "": 
-                print(current_player.colours['prompt'] + Fore.RED + "Valid characters are A-Z & a-z, No special characters allowed")
+                print(current_player.colours['prompt'] + Fore.RED + 
+                "Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
-            #### Check if already guessed ######
+            # Check if already guessed ######
             if letterGuessed in current_player.current_letters_guessed:
                 print(current_player.colours['prompt'] + "You already guessed '%s'" %(letterGuessed))
                 run()
@@ -232,13 +233,13 @@ def run():
             
             
 """ Main game menu loop """
-###### Added new function to get number of players
+# Added new function to get number of players
 
 def getNumberOfPlayers():
     print(Fore.GREEN + "Enter number of players: (1-3 max)")
     player_num = input()
 
-    ##### Added validation checks on number of players
+    # Added validation checks on number of players
     if player_num in punct or player_num == "":
         print(Fore.RED + "Not a valid number! Please try again.")
         getNumberOfPlayers()
@@ -246,11 +247,11 @@ def getNumberOfPlayers():
         
     player_num = int(player_num)
 
-    ##### Check number is in range of 1 to 3 and not less than 0
+    # Check number is in range of 1 to 3 and not less than 0
     if player_num <= 0:
         print(Fore.RED + "The min number of players is 1! Try again.")
         getNumberOfPlayers()
-    ##### Check number is in range of 1 to 3 and not greater than 3
+    # Check number is in range of 1 to 3 and not greater than 3
     elif player_num > 3:
         print(Fore.RED + "The max number of players is 3! Try again.")
         getNumberOfPlayers()
@@ -261,7 +262,7 @@ def getNumberOfPlayers():
             print(Fore.GREEN + "Enter player name:" + Fore.WHITE)
             name = input()
 
-            #### Remove white space from name on the left and right
+            # Remove white space from name on the left and right
             name = name.lstrip().rstrip()
             if name == "":
                 mainMenu()
@@ -272,18 +273,18 @@ def getNumberOfPlayers():
             
             player.setColour(palettes[p])
 
-        #### Corrected bug in multiplayer option 
+        # Corrected bug in multiplayer option 
         print(Fore.GREEN + "Let's Playyyyyyy!!!")
         
         run() #THIS WAS INDENTED.
         ########################################
 
-#### Refactored main() to mainMenu()
+# Refactored main() to mainMenu()
 def mainMenu():
     players = [] # reset global player array after each new game. 
     # Start menu for user
     choice = ""
-   
+
     print(Fore.WHITE + """
 --------------------------------------------------------------------------
              _   _    _    _   _  ____ __  __    _    _   _ _ 
@@ -299,28 +300,36 @@ def mainMenu():
         print(Fore.YELLOW + Back.RED + " 2) Rules")        
         print(Fore.YELLOW + Back.BLUE + " 3) Exit Game")
 
-        choice = input(Fore.GREEN + " Menu Select: \n" + Fore.WHITE)
+        choice = input(Fore.GREEN + " Menu Select, enter desired number: \n" 
+        + Fore.WHITE)
         choice = choice.strip()
         
-        #### Added validation to check enter key without valid input
+        # Added validation to check enter key without valid input
         if choice == "":
             mainMenu()
             
         if (choice == "1"):
-            #### refactored into a function
+            # refactored into a function
             getNumberOfPlayers()
             ###############################
 
         elif (choice == "2"):
-               print(Fore.CYAN + "\n1. A word is generated at random.\n2. Select desired letters. \n3. Keep guessing letters until you either guess the word or the hangman hangs!!!\n  \n------------------------------------------------------")
+            print(Fore.CYAN + f"""
+            \n 1. Select Number of players (1-3 max).
+            \n 2. Enter players names.
+            \n 3. A word is generated at random.
+            \n 4. Select letters you believe are in your random word. 
+            \n 5. Keep guessing letters until you either guess the word or the 
+            hangman hangs!!!\n  
+            \n------------------------------------------------------\n""")
         elif(choice == "3"):
-               print(Fore.GREEN + " Thank you for playing!!!")
-               break                
+            print(Fore.GREEN + " Thank you for playing!!!")
+            break                
         else:
-               print(Fore.RED + " Invalid Choice, Please Try Again.")
+            print(Fore.RED + " Invalid Choice, Please Try Again.")
 
 
 if __name__ == "__main__":
-    #### Refactored main() to mainMenu()
+    #  Refactored main() to mainMenu()
     mainMenu()
 
