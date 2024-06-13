@@ -13,17 +13,27 @@ Users can quickly learn the rules of the game and then play along following the 
 ## How to play:
 
   1. Click this *[link](https://hang-man888-99eb4815e363.herokuapp.com/)* or copy this text: https://hang-man888-99eb4815e363.herokuapp.com/ and paste it in your browser's address bar.
+
   2. As soon as the page is loaded, click 'RUN PROGRAM'.
+
   3. Select an option from the main menu.
+
   4. Learn the rules if needed.
+
   5. You can add multiplayer if desired once you press play game, you will be prompted to enter how many players you want to play with (max 3).
+
   6. You will then be asked to add each players name 1 by 1. 
+
   7. A word is selected from an imported word bank of approximatley 2000 words. 
-  8. Look at how long your word to guess is and start thinking about what it could be. Add your letter guesses when prompted. If you chose to play multiplayer, each player will take 
-     it in turns to guess a letter and each players guesses will be displayed when it is their turn.
+
+  8. Look at how long your word to guess is and start thinking about what it could be. Add your letter guesses when prompted. If you chose to play multiplayer, each player will take it in turns to guess a letter and each players guesses will be displayed when it is their turn.
+
   9. As you add each letter it will either appear and take the place of a blank soace in the word, or it will add another part onto the hangman.
+
   10. You have 9 wrong attempts to guess the word before the hanging takes place!
-  11. If you fail and get it wrong, the full hangman is displayed and "game over! :(" is printed, and the word you were trying to guess is revealed. 
+
+  11. If you fail and get it wrong, the full hangman is displayed and "game over!" is printed, and the word you were trying to guess is revealed.
+
   12. If you successfully guess the word, congratulations, you win!!!! The main menu pops up, and you can either choose to play again or leave the game.
 
   Link to the game:(https://hang-man888-99eb4815e363.herokuapp.com/)*
@@ -33,11 +43,16 @@ Users can quickly learn the rules of the game and then play along following the 
 ### First Time Visitor Goals:
 
 * As a First Time Visitor, I want to quickly understand the program's primary purpose so that I can learn more about this program.
+
 * As a First Time Visitor, I want to navigate through the program easily so that I can find the content.
+
 * As a First Time Visitor, I want to find the program useful for myself so that I can fulfill my expectations and have fun.
+
 * As a First Time Visitor, I want to see different text colors so it looks more enticing, and the different parts of the game are easily distinguishable.
 
+
 ### Frequent Visitor Goals:
+
 * As a Frequent User, I want to be able to play as many times as I like and not worry about a word being repeated, variation is key in this game.
 * As a Frequent User, I will want to explore the other game option, multiplayer.
 
@@ -95,6 +110,7 @@ The flowchart represents the logic of the application:
   ![Flow chart Page](documentation/features/flowchart.png)
 
 ---
+
 ## Technologies Used
 
 ### Languages:
@@ -106,6 +122,7 @@ The flowchart represents the logic of the application:
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) used to construct the elements involved in building the mock terminal in the browser
 
 ### Frameworks/Libraries, Programmes and Tools:
+
 #### Python modules/packages:
 
 ##### Standard library imports:
@@ -133,108 +150,80 @@ The flowchart represents the logic of the application:
 
 + **Solved bugs**
 
+1. Special characters and numbers were being read and allowed by the program including blank and white spaces and repeated letter guesses.
 
-1. Special characters and numbers were being read and allowed by the program.
+*Solution:* 
 
-    # *Solution:* 
-    
-    - I defined a function that checked for "invalid chars" and provided a print statement saying "Valid characters are A-Z & a-z" if one is used.
+- I defined a function that checked for "invalid chars" and provided a print statement saying "Valid characters are A-Z & a-z" if one is used.
 
-     ```python
-    def checkValid(char):
-        if char in invalid_chars:
-            return False
-        else:
-            return True
+#### This shows the game restarting if a blank space was entered into input prompt.
 
-        &
+![Screenshot](documentation/bug_screenshots/ent_restart_error.png)
 
-            isValid = checkValid(letterGuessed)
-        if not isValid: 
-            print("Valid characters are A-Z & a-z")
-      ```
+#### The next screen shots show the code added to prevent this happening.
+
+![Screenshot](documentation/bug_screenshots/invalid_chars.png)
+
+![Screenshot](documentation/bug_screenshots/invalid_chars_2.png)
+
+![Screenshot](documentation/bug_screenshots/invalid_chars_3.png)
 
 2. The counter wasnt working, and a piece of the hangman was being added each time a letter was guessed, even if it was correctly part of the word.
 
-    # *Solution:* 
-    
-    - Added counter "rightLetters += 1" as it wasnt there the count wasnt being updated and stayed at 0.
+*Solution:* 
 
-     ```python
-    # counter
-    def printWord(randomWord, guessedLetters):
-        counter=0
-        rightLetters=0
-        for char in randomWord:
-            if(char in guessedLetters):
-                print(randomWord[counter], end=' ')
-                rightLetters += 1 # ADDED - to fix main bug, it wasn't being updated so was always 0
-            else:
-                print(" ", end=" ")
-            counter += 1
-        return rightLetters
-    ```
+- Added counter "rightLetters += 1" as it wasnt there the count wasnt being updated and stayed at 0.
 
+![Screenshot](documentation/bug_screenshots/counter_bug.png)
 
 3. Invalid escape sequence, syntax warning. characters being used for the hangman visual and welcome game title.
 
-    # *Solution:*
+*Solution:*
 
-    - Backslash "\" was used in many places, as its an escape sequence it was showing an error, I had to double all backslashes used to remove the error message.
+- Backslash was used in many places, as its an escape sequence it was showing an error, I had to double all backslashes used to remove the error message.
 
-    (documentation/bug_screenshots/invalid_escape_sequence_bug.png)
+![Screenshot](documentation/bug_screenshots/invalid_escape_sequence_bug.png)
+
+![Screenshot](documentation/bug_screenshots/escape_sequence_fix.png)
+
+![Screenshot](documentation/bug_screenshots/escape_sequence_fix_2.png)
 
 4. Main not being defined when you try to exit the game. 
-    
-    ```python
-    1) Play Game
-    2) Rules
-    3) Exit Game
 
-    Menu Select: 
-    3
-    Thank you for playing!!!
-    Traceback (most recent call last):
-    File "/workspace/hang_man/run.py", line 217, in <module>
-        main()
-NameError: name 'main' is not defined. Did you mean: 'min'?        ^^^^```
+![Screenshot](documentation/bug_screenshots/main_notdefined_error.png)
 
-    # *Solution:* 
-    
-    - Indentation mistake.
+*Solution:* 
+
+- Indentation mistake.
 
 5. if you press enter without any input in "guess a letter" input, it resets the game and picks a new random word.
 
-    # *Solution*
+*Solution:*
 
-         # Game over state
-            if current_player.amount_of_times_wrong >= tries:
-                current_player.GAME_OVER = True
-                print(Fore.BLACK + Back.RED + "\n GAME OVER! %s :( "%(current_player.name))
-                print(Fore.BLACK + Back.RED + " Your word was...")
-                print(Fore.YELLOW + current_player.randomWord)
-                players.pop(p) <--------
-                break
+- Added player.pop(p) to reset loop and clear data.
 
-            ### win state
-            if current_player.current_letters_right >= current_player.length_of_word_to_guess:
-                print(Fore.YELLOW + Back.GREEN + "\n YOU WONNN!")
-                players.pop(p) <---------
-                ####################################
-                mainMenu() # Call main menu
-                ####################################
-                break
+![Screenshot](documentation/bug_screenshots/main_game_loop_bug.png)
 
-    - Added player.pop(p) to reset loop and clear data
+6. Heroku error. Issue getting my project to deploy when first using heroku. 
 
-+ **Unsolved bugs**
+![Screenshot](documentation/bug_screenshots/heroku_error.png)
 
----
+*Solution:*
+
+- Had to add in nodejs buildpack into my heroku files.
+
+![Screenshot](documentation/bug_screenshots/heroku_buildpack.png)
+
+7. Multiplayer game loop not getting restarted at the end of each game. this was due to run() being wrongly indented.
+
+![Screenshot](documentation/bug_screenshots/multiplayer_loop_bug.png)
+
+![Screenshot](documentation/bug_screenshots/stop_multiplayer.png)
+
 ## Testing
 
-Please refer to the [TESTING.md](TESTING.md) file for all test related documentation.??????????????????????????
+- Testing was carried out using the CI Linter check web page [CI Linter Validation](https://pep8ci.herokuapp.com/#)
 
----
 ## Deployment
 
 - The program was deployed to [Heroku](https://dashboard.heroku.com).
@@ -271,14 +260,8 @@ Create a local copy of the GitHub repository by following one of the two process
       - `cd hang_man` !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       2. Run the command pip install -r requirements.txt
         - `pip3 install -r requirements.txt`
-      3. *Note:* If you are located in China ![China](https://www.countryflags.io/cn/flat/32.png) or any other country with restricted internet access, you may need to add the following code in order to be able to use the nltk package.
-      
-       - For example:
-
-        ```python
-        nltk.set_proxy('127.0.0.1:41091')??????????????????????????????????????????
-        ```
-      - To set the proxy, you need to open setting in preferred VPN, find Server address and HTTP/HTTPS Proxy Port joining them by colons as it is shown in the example above:
+      3. *Note:* If you are located in China or any other country with restricted internet access, you may need to add the following code in order to be able to use the nltk package.
+        - To set the proxy, you need to open setting in preferred VPN, find Server address and HTTP/HTTPS Proxy Port joining them by colons as it is shown in the example above:
       ![Settings VPN](documentation/deployment/settings_vpn.png)????????????????????????????????????????
 
 
@@ -286,79 +269,36 @@ Create a local copy of the GitHub repository by following one of the two process
 - Clone the repository:
   1. Open a folder on your computer with the terminal.
   2. Run the following command
-  - `git clone https://github.com/Joeski88/hang_man.git`
-
+    - `git clone https://github.com/Joeski88/hang_man.git`
   3. Create your own GitHub repository to host the code.
   4. Run the command `git remote set-url origin <Your GitHub Repo Path>` to set the remote repository location to your repository.
-
   5. Push the files to your repository with the following command:
-  `git push`
+    - `git push`
   6. Create a Heroku account if you don't already have one here [Heroku](https://dashboard.heroku.com).
   7. Create a new Heroku application on the following page here [New Heroku App](https://dashboard.heroku.com/apps):
-
-      - ![New Heroku App](documentation/deployment/new_heroku_app.png)!!!!!!!!!!!
-
-  8. Go to the Deploy tab:
-
-      - ![Deploy Tab](documentation/deployment/deploy_tab.png)!!!!!!!!!!!!!!
-
-      - ![Deployment Method](documentation/deployment/deployment_method.png)!!!!!!!!!!!!!!!!!!!!
-
+  8. Go to the Deploy tab.
   9. Link your GitHub account and connect the application to the repository you created.
-
-      - ![Link GitHub account](documentation/deployment/link_to_github.png)!!!!!!!!!!!!!!!!!
-
-  10. Go to the Settings tab:
-  
-      - ![Settings Tab](documentation/deployment/settings_tab.png)!!!!!!!!!!!!!!!!!!!!!
-
-  11. Click "Add buildpack":
-
-      - ![Add Buildpack](documentation/deployment/add_buildpack.png)!!!!!!!!!!!!!!!!!!!!!!!!!
-
-  12. Add the Python and Node.js buildpacks in the following order:
-
-      - ![Add Python and Node.js](documentation/deployment/add_python_and_node_js.png)!!!!!!!!!!!!
-
+  10. Go to the Settings tab.
+  11. Click "Add buildpack".
+  12. Add the Python and Node.js buildpacks in the following order.
   13. Click "Reveal Config Vars."
-
-      - ![Reveal Config Vars](documentation/deployment/reveal_config_vars.png)!!!!!!!!!!!!!!!!!!
-
   14. Add 1 new Config Vars:
       - Key: PORT Value: 8000
       - *This Config was provided by [CODE INSTITUTE](https://codeinstitute.net/)*.
-
-  15. Go back to the Deploy tab:
-
-      - ![Deploy Tab](documentation/deployment/deploy_tab.png)!!!!!!!!!!!!!!!!
-
-  16. Click "Deploy Branch":
-
-      - ![Deploy Branch](documentation/deployment/deploy_branch.png)!!!!!!!!!!!!!!!!!!!!!!
-
-      - Wait for the completion of the deployment.
-
-      - ![Deploying Branch](documentation/deployment/deploying_branch.png)!!!!!!!!!!!!!!!!!!!!
-
+  15. Go back to the Deploy tab.
+  16. Click "Deploy Branch".
+        - Wait for the completion of the deployment.
   17. Click "Open app" to launch the application inside a web page.
 
-      - ![View Button](documentation/deployment/view_app.png)!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
----
 ## Credits
 
 - Color formatting: [Colorama](https://pypi.org/project/colorama/).
 - Random Lists & word banks: [randomlists](https://www.randomlists.com/) This page provided me with a random list of words from the english language to add to words.py.
 - YouTube [youtube.com](https://www.youtube.com/watch?v=8ext9G7xspg&t=5790s) This tutorial showed me the basic logic of making a terminal based hangman python game.
-- 
-- 
-- 
 
 
----
 ## Acknowledgements
-
 - My Mentor Iuliia Konovalova. I had issues with the help i was recieving with my previous mentor, 
   but i noticed a huge difference with the way Julia spoke to me and how she managed my situation, 
-  she deserves alot of credit and praise for how she dealt with it.
-- 
+  she deserves alot of credit and praise for how she dealt with it. 

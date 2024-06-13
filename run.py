@@ -24,10 +24,8 @@ palettes = [{
     'lose': Fore.BLACK + Back.RED,
 }]
 
-
-####################################
-punct = string.punctuation + " " # Capture whitespace.
-####################################
+# Capture whitespace in input prompts.
+punct = string.punctuation + " " 
 
 numbers = "0123456789"
 tries = 9
@@ -67,7 +65,8 @@ def checkValid(char):
 
 def print_hangman(wrong):
     if(wrong == 1):
-        print(f"\n                   +=====+")
+        print(f"""\n
+                   +=====+""")
     elif(wrong == 2):
         print(f"""\n
                    +====+
@@ -163,7 +162,7 @@ def run():
             
             current_player = players[p]
             
-            print(current_player.colours['prompt'] + "\nYour turn %s!" %(current_player.name))
+            print(current_player.colours['prompt'] + "\n Your turn %s!" %(current_player.name))
             printWord(current_player.randomWord, current_player.current_letters_guessed)
             
 
@@ -186,10 +185,8 @@ def run():
                     print(losing_player.colours['lose'] + " %s, your word was..." %(losing_player.name))
                     print(losing_player.colours['prompt'] + losing_player.randomWord)
                 
-                
-                ####################################
-                mainMenu() # Call main menu
-                ####################################
+                # Call main menu
+                mainMenu() 
                 break
 
             if len(current_player.current_letters_guessed) >= 1:
@@ -205,14 +202,13 @@ def run():
 
             if not isValid or letterGuessed == "": 
                 print(current_player.colours['prompt'] + Fore.RED + 
-                "Valid characters are A-Z & a-z, No special characters allowed")
+                " Valid characters are A-Z & a-z, No special characters allowed")
                 run()
 
-            # Check if already guessed ######
+            # Check if letter already guessed 
             if letterGuessed in current_player.current_letters_guessed:
-                print(current_player.colours['prompt'] + "You already guessed '%s'" %(letterGuessed))
+                print(current_player.colours['prompt'] + " You already guessed '%s'" %(letterGuessed))
                 run()
-            ####################################
                 
             # User is right
             for current_player.current_guess_index in range(current_player.length_of_word_to_guess):
@@ -236,37 +232,35 @@ def run():
 # Added new function to get number of players
 
 def getNumberOfPlayers():
-    print(Fore.GREEN + "Enter number of players: (1-3 max)")
+    print(Fore.GREEN + " Enter number of players: (1-3 max)")
     player_num = input()
 
     # Added validation checks on number of players
     if player_num in punct or player_num == "":
-        print(Fore.RED + "Not a valid number! Please try again.")
+        print(Fore.RED + " Not a valid number! Please try again.")
         getNumberOfPlayers()
-    ####################################
         
     player_num = int(player_num)
 
     # Check number is in range of 1 to 3 and not less than 0
     if player_num <= 0:
-        print(Fore.RED + "The min number of players is 1! Try again.")
+        print(Fore.RED + " The min number of players is 1! Try again.")
         getNumberOfPlayers()
     # Check number is in range of 1 to 3 and not greater than 3
     elif player_num > 3:
-        print(Fore.RED + "The max number of players is 3! Try again.")
+        print(Fore.RED + " The max number of players is 3! Try again.")
         getNumberOfPlayers()
-    ##############################################
     else:        
-        print(Fore.GREEN + "Number of players:" + Fore.WHITE, player_num)
+        print(Fore.GREEN + " Number of players:" + Fore.WHITE, player_num)
         for p in range(player_num):
-            print(Fore.GREEN + "Enter player name:" + Fore.WHITE)
+            print(Fore.GREEN + " Enter player name:" + Fore.WHITE)
             name = input()
 
             # Remove white space from name on the left and right
             name = name.lstrip().rstrip()
             if name == "":
                 mainMenu()
-            ##############################
+
             player = addPlayer(name)
             randomWord = getWord()
             player.setWord(randomWord)
@@ -274,10 +268,9 @@ def getNumberOfPlayers():
             player.setColour(palettes[p])
 
         # Corrected bug in multiplayer option 
-        print(Fore.GREEN + "Let's Playyyyyyy!!!")
+        print(Fore.GREEN + " Let's Playyyyyyy!!!")
         
-        run() #THIS WAS INDENTED.
-        ########################################
+    run() #THIS WAS INDENTED.
 
 # Refactored main() to mainMenu()
 def mainMenu():
@@ -311,7 +304,7 @@ def mainMenu():
         if (choice == "1"):
             # refactored into a function
             getNumberOfPlayers()
-            ###############################
+
 
         elif (choice == "2"):
             print(Fore.CYAN + f"""
@@ -320,8 +313,8 @@ def mainMenu():
             \n 3. A word is generated at random.
             \n 4. Select letters you believe are in your random word. 
             \n 5. Keep guessing letters until you either guess the word or the 
-            hangman hangs!!!\n  
-            \n------------------------------------------------------\n""")
+hangman hangs!!!\n  
+            ------------------------------------------------------\n""")
         elif(choice == "3"):
             print(Fore.GREEN + " Thank you for playing!!!")
             break                
@@ -332,4 +325,3 @@ def mainMenu():
 if __name__ == "__main__":
     #  Refactored main() to mainMenu()
     mainMenu()
-
