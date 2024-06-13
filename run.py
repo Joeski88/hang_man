@@ -7,9 +7,6 @@ init(autoreset=True)
 
 from player import Player
 
-global players
-players = []
-
 palettes = [{
     'prompt': Fore.YELLOW,
     'win': Fore.YELLOW + Back.CYAN,
@@ -274,6 +271,8 @@ def getNumberOfPlayers():
 
 # Refactored main() to mainMenu()
 def mainMenu():
+    global players
+    
     players = [] # reset global player array after each new game. 
     # Start menu for user
     choice = ""
