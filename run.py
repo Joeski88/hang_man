@@ -8,7 +8,7 @@ from player import Player
 # initialise colorama library
 init(autoreset=True)
 
-# Create palatte for players colours
+""" Create palatte for players colours """
 palettes = [{
     'prompt': Fore.YELLOW,
     'win': Fore.YELLOW + Back.CYAN,
@@ -23,7 +23,7 @@ palettes = [{
     'lose': Fore.BLACK + Back.RED,
 }]
 
-# Store whitespace and invalid characters in input prompts.
+""" Store whitespace and invalid characters in input prompts. """
 punct = string.punctuation + " " 
 numbers = "0123456789"
 tries = 9
@@ -31,14 +31,14 @@ tries = 9
 invalid_chars = punct + numbers
 
 
-# function for adding player name
+""" function for adding player name """
 def add_player(name):
     p = Player(name)
     players.append(p)
     return p
 
 
-# function for checking invalid characters
+""" function for checking invalid characters """
 def check_valid(char):
     if char in invalid_chars:
         return False
@@ -47,7 +47,6 @@ def check_valid(char):
 
 
 """ Hangman terminal visuals """
-
 
 def print_hangman(wrong):
     if (wrong == 1):
@@ -112,8 +111,7 @@ def print_hangman(wrong):
 
 """ main game loop and counter """
 
-
-# Display player word and letters guessed so far
+""" Display player word and letters guessed so far """
 def print_word(random_word, guessed_letters):
     right_letters = 0
     display_word= ""
@@ -127,14 +125,14 @@ def print_word(random_word, guessed_letters):
     print(display_word.strip())
     return right_letters
     
-# function to get word
+"""function to get word"""
 def get_word():
     # pick a random word from list
     random_word = random.choice(words)
     return random_word
     
     
-# Runs the game
+"""Runs the game"""
 def run():
     while(True):
         if len(players) == 0:
@@ -214,7 +212,6 @@ def run():
             
 """ Main game menu loop """
 # Get number of players
-
 def get_number_of_players():
     print(Fore.GREEN + " Enter number of players: (1-3 max)")
     player_num = input()
@@ -257,7 +254,7 @@ def get_number_of_players():
     # Run game   
     run()
 
-# Main menu
+"""Main menu"""
 def main_menu():
 
     global players

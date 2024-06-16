@@ -226,6 +226,37 @@ The flowchart represents the logic of the application:
 
 - Testing was carried out using the CI Linter check web page [CI Linter Validation](https://pep8ci.herokuapp.com/#)
 
+## Manual Testing
+
+## Manual testing
+
+| feature | action | expected result | tested | passed | comments |
+| --- | --- | --- | --- | --- | --- |
+| Main Title and Menu | | | | | |
+| Main title | Visual representation of the game | Aligned properly and clearly readable | Yes | Yes | - |
+| Menu Display | Select the menu option number desired | The user is redirected to either the rules, a new game or the exit screen | Yes | Yes | - |
+| Game start | User asked for number of players and player names | Input taken and data used to start the game | Yes | Yes | - |
+| Main Game | | | | | |
+| 1 Player Game | Play a solo game | Go through a solo game with no errors and all potential bugs thought about and dealt with | Yes | Yes | - |
+| 2 & 3 Player Game | Play a 2 or 3 player game | As above, however, each player is different colours and its clearly defined | Yes | Yes | - |
+| Game Ending | When a player either guesses the correct word or  | The user is redirected to the Twitter page | Yes | Yes | - |
+| YouTube icon in the footer | Click on the YouTube icon | The user is redirected to the YouTube page | Yes | Yes | - |
+| Home page | | | | | |
+| "Contact Us" button in Hero section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
+| "Contact Us" button in Call to action section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
+| Gallery page | | | | | |
+| "Contact Us" button in Hero section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
+| Image in the gallery | User hover the image | Pet's name and description appear on the image | Yes | Yes | - |
+| "Contact Us" button in Call to action section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
+| Contact page | | | | | |
+| First name input | Enter the first name | The first name is entered | Yes | Yes | If user doesn't enter the first name, the error message appears |
+| Last name input | Enter the last name | The last name is entered | Yes | Yes | If user doesn't enter the last name, the error message appears |
+| Email input | Enter the email | The email is entered | Yes | Yes | If user doesn't enter the email, the error message appears. If user enters not valid email, the error message appears |
+| Adopt and donate checkbox | Click on the checkbox | The checkbox is checked | Yes | Yes | These checkboxes are not required as the user can choose not to adopt or donate and other reasons for contacting |
+| "Submit" button | Click on the "Submit" button | The user is redirected to the response page | Yes | Yes | - |
+| Response page | | | | | |
+| Response message | The user will be automatically redirected to the home page after 10 seconds | The user is redirected to the home page | Yes | Yes | - |
+
 ## Deployment
 
 - The program was deployed to [Heroku](https://dashboard.heroku.com).
