@@ -128,13 +128,14 @@ The flowchart represents the logic of the application:
 ##### Standard library imports:
 
 - [random](https://docs.python.org/3/library/random.html) was used to implement pseudo-random word selection from word bank.
-- [os](https://docs.python.org/3/library/os.html ) was used to clear the terminal before running the program.???????????????
+- [os](https://docs.python.org/3/library/os.html) was used to clear the terminal before running the program.
+- [String](https://docs.python.org/3/library/string.html) ws used to read strings added into code.
 
 ##### Third-party imports:
 
 - [Random Lists](https://www.randomlists.com/data/words.json) Word bank used for word pool for the game.
 - [Colorama](https://pypi.org/project/colorama/) was used to add colors and styles to the project.
-- [os, random, string](????)????
+
 
 #### Other tools:
 
@@ -143,7 +144,8 @@ The flowchart represents the logic of the application:
 - [GitHub](https://github.com/) was used to host the code of the website.
 - [Techsini](https://techsini.com/) used to create the head mock up picture for the readme.
 - [Miro](https://miro.com/app/dashboard/) was used to make a flowchart for project planning and the README file.
-
+- [Gitpod](https://gitpod.io/workspaces) was used to create the workspaces.
+- [Heroku](https://id.heroku.com/) Used to deploy finished project.
 ---
 
 ## Bugs
@@ -256,14 +258,10 @@ Create a local copy of the GitHub repository by following one of the two process
 
   1. Install Python module dependencies:
      
-      1. Navigate to the folder madlib_with_python by executing the command:
+      1. Navigate to the folder hang_man by executing the command:
       - `cd hang_man` !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       2. Run the command pip install -r requirements.txt
         - `pip3 install -r requirements.txt`
-      3. *Note:* If you are located in China or any other country with restricted internet access, you may need to add the following code in order to be able to use the nltk package.
-        - To set the proxy, you need to open setting in preferred VPN, find Server address and HTTP/HTTPS Proxy Port joining them by colons as it is shown in the example above:
-      ![Settings VPN](documentation/deployment/settings_vpn.png)????????????????????????????????????????
-
 
 ### To deploy the project to Heroku so it can be run as a remote web application:
 - Clone the repository:

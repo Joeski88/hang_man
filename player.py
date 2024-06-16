@@ -3,7 +3,7 @@ class Player():
         self.name = firstname
         self.wordtoguess = ""
         self.amount_of_times_wrong = 0
-        self.randomWord = ""
+        self.random_word = ""
         
         
         self.length_of_word_to_guess = 0
@@ -17,13 +17,13 @@ class Player():
         
         self.colours = {}
         
-    def setWord(self, randomWord):
-        self.randomWord = randomWord
-        self.length_of_word_to_guess = len(randomWord)
+    def set_word(self, random_word):
+        self.random_word = random_word
+        self.length_of_word_to_guess = len(random_word)
     
-    def printWord(self):
-        print (self.randomWord)
-        return self.randomWord
+    def print_word(self):
+        print (self.random_word)
+        return self.random_word
 
-    def setColour(self, palette):
+    def set_colour(self, palette):
         self.colours = palette
