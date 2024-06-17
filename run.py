@@ -26,7 +26,7 @@ palettes = [
 ]
 
 """ Store whitespace and invalid characters in input prompts. """
-punct = string.punctuation + " " 
+punct = string.punctuation + " "
 numbers = "0123456789"
 tries = 9
 # Concatenate all invalid input for game
@@ -34,6 +34,8 @@ invalid_chars = punct + numbers
 
 
 """ function for adding player name """
+
+
 def add_player(name):
     p = Player(name)
     players.append(p)
@@ -41,6 +43,8 @@ def add_player(name):
 
 
 """ function for checking invalid characters """
+
+
 def check_valid(char):
     if char in invalid_chars:
         return False
@@ -49,6 +53,7 @@ def check_valid(char):
 
 
 """ Hangman terminal visuals """
+
 
 def print_hangman(wrong):
     if (wrong == 1):
@@ -114,9 +119,11 @@ def print_hangman(wrong):
 """ main game loop and counter """
 
 """ Display player word and letters guessed so far """
+
+
 def print_word(word, guessed_letters):
     right_letters = 0
-    display_word= ""
+    display_word = ""
     # loop to print correct letters in word
     for char in word:
         if char in guessed_letters:
@@ -126,30 +133,34 @@ def print_word(word, guessed_letters):
             display_word += '_ '
     print(display_word.strip())
     return right_letters
-    
+
+
 """function to get word"""
+
+
 def get_word():
     # pick a random word from list
     word = random.choice(words)
     return word
-    
-    
+
+
 """Runs the game"""
+
+
 def run():
-    while(True):
+    while (True):
         if len(players) == 0:
             main_menu()
-        
+
         for p in range(len(players)):
             # Add boundary between player goes/players
-            print("\n %s %s %s " %("=" * 20," NEXT PLAYER ","=" * 20))
+            print("\n %s %s %s " % ("=" * 20, " NEXT PLAYER ", "=" * 20))
             # Set current player
             cp = players[p]
-            
-            print(cp.colours['prompt'] + 
-                "\n Your turn %s!" %(cp.name))
+
+            print(cp.colours['prompt'] +
+                  "\n Your turn %s!" % (cp.name))
             print_word(cp.word, cp.letters_guessed)
-            
 
             # Check for game over state
             if cp.amount_of_times_wrong >= tries:
@@ -167,14 +178,13 @@ def run():
 
                 # Show player names and words if game over
                 for losing_player in players:
-                    print(losing_player.colours['lose'] + 
-                    " %s, your word was..." % (losing_player.name))
-                    print(losing_player.colours['prompt'] + 
-                    losing_player.word)
-                
+                    print(losing_player.colours['lose'] +
+                          " %s, your word was..." % (losing_player.name))
+                    print(losing_player.colours['prompt'] +
+                          losing_player.word)
+
                 # Call main menu
-                main_menu() 
-                #break
+                main_menu()
 
             # Display letters guessed so far for current player
             if len(cp.letters_guessed) >= 1:
@@ -184,28 +194,28 @@ def run():
                 print(cp.colours['prompt'] + letter, end="  ")
 
             # prompt for user input
-            letter_guessed = input(cp.colours['prompt'] + 
-            "\n Guess a letter (attempts left=%d): " 
-            %(tries - cp.amount_of_times_wrong))
+            letter_guessed = input(cp.colours['prompt'] +
+                                   "\n Guess a letter (attempts left=%d): "
+                                   % (tries - cp.amount_of_times_wrong))
 
             # check for multiple characters entered at once
-            if len(letter_guessed) > 1: 
-                print(cp.colours['prompt'] + 
-                "\n No more than one character allowed")
+            if len(letter_guessed) > 1:
+                print(cp.colours['prompt'] +
+                      "\n No more than one character allowed")
                 run()
-            # Check for valid characters   
+            # Check for valid characters
             is_valid = check_valid(letter_guessed)
 
-            if not is_valid or letter_guessed == "": 
-                print(cp.colours['prompt'] + Fore.RED + 
-                    "\n Valid characters are A-Z & a-z," +
-                    "No special characters allowed")
+            if not is_valid or letter_guessed == "":
+                print(cp.colours['prompt'] + Fore.RED +
+                      "\n Valid characters are A-Z & a-z," +
+                      "No special characters allowed")
                 run()
 
             # Check if letter already guessed
             if letter_guessed in cp.letters_guessed:
-                print(cp.colours['prompt'] + 
-                " You already guessed '%s'" % (letter_guessed))
+                print(cp.colours['prompt'] +
+                      " You already guessed '%s'" % (letter_guessed))
                 run()
             # User is right
             for cp.guess_index in range(cp.length_of_word_to_guess):
@@ -215,15 +225,17 @@ def run():
                     break
             # User wrong
             if (cp.word[cp.guess_index] != letter_guessed):
-                if(cp.letters_right < cp.length_of_word_to_guess):
+                if (cp.letters_right < cp.length_of_word_to_guess):
                     cp.amount_of_times_wrong += 1
                     cp.letters_guessed.append(letter_guessed)
                     # Update drawing
                     print_hangman(cp.amount_of_times_wrong)
                     # Print word
                     cp.letters_right = print_word(cp.word, cp.letters_guessed)
-            
+
+
 """ Main game menu loop """
+
 
 def get_player_names():
     print(Fore.GREEN + "Enter player name:" + Fore.WHITE)
@@ -234,6 +246,7 @@ def get_player_names():
         print("Not a valid player name! Please try again.")
         get_player_names()
     return name
+
 
 # Get number of players
 def get_number_of_players():
@@ -256,16 +269,10 @@ def get_number_of_players():
         print(Fore.RED + " The max number of players is 3! Try again.")
         get_number_of_players()
     else:
-        # Get name and word for each player        
+        # Get name and word for each player
         print(Fore.GREEN + " Number of players:" + Fore.WHITE, player_num)
         for p in range(player_num):
-            #print(Fore.GREEN + " Enter player name:" + Fore.WHITE)
-            #name = input()
-            # Remove white space from name on the left and right
-            #name = name.lstrip().rstrip()
-            # check for ent button with no input
-            #if name == "":
-                #main_menu()
+
             # Initialise player
             name = get_player_names()
             player = add_player(name)
@@ -273,12 +280,15 @@ def get_number_of_players():
             player.set_word(word)
             player.set_colour(palettes[p])
 
-        # Corrected bug in multiplayer option 
+        # Corrected bug in multiplayer option
         print(Fore.GREEN + " Let's Playyyyyyy!!!")
-    # Run game   
+    # Run game
     run()
 
+
 """Main menu"""
+
+
 def main_menu():
 
     global players
@@ -292,7 +302,7 @@ def main_menu():
     # Print main title
     print(Fore.WHITE + """
 --------------------------------------------------------------------------
-             _   _    _    _   _  ____ __  __    _    _   _ _ 
+             _   _    _    _   _  ____ __  __    _    _   _ _
             | | | |  / \\  | \\ | |/ ___|  \\/  |  / \\  | \\ | | |
             | |_| | / _ \\ |  \\| | |  _| |\\/| | / _ \\ |  \\| | |
             |  _  |/ ___ \\| |\\  | |_| | |  | |/ ___ \\| |\\  |_|
@@ -303,13 +313,13 @@ def main_menu():
     # Main menu listing
     while GAME_RUNNING:
         print(Fore.YELLOW + Back.MAGENTA + " 1) Play Game")
-        print(Fore.YELLOW + Back.RED + " 2) Rules")        
+        print(Fore.YELLOW + Back.RED + " 2) Rules")
         print(Fore.YELLOW + Back.BLUE + " 3) Exit Game")
 
-        choice = input(Fore.GREEN + " Menu Select, enter desired number: \n" 
+        choice = input(Fore.GREEN + " Menu Select, enter desired number: \n"
                        + Fore.WHITE)
         choice = choice.strip()
-        
+
         if choice == "":
             main_menu()
         # Play game option
@@ -322,14 +332,14 @@ def main_menu():
             \n 1. Select Number of players (1-3 max).
             \n 2. Enter players names.
             \n 3. A word is generated at random.
-            \n 4. Select letters you believe are in your random word. 
-            \n 5. Keep guessing letters until you either guess the word or the 
-hangman hangs!!!\n  
+            \n 4. Select letters you believe are in your random word.
+            \n 5. Keep guessing letters until you either guess the word or the
+hangman hangs!!!\n
             ------------------------------------------------------\n""")
         # Exit option
-        elif(choice == "3"):
+        elif (choice == "3"):
             print(Fore.GREEN + " Thank you for playing!!!")
-            GAME_RUNNING = False              
+            GAME_RUNNING = False
         else:
             # Check for invalid option
             print(Fore.RED + " Invalid Choice, Please Try Again.")
@@ -338,4 +348,3 @@ hangman hangs!!!\n
 if __name__ == "__main__":
     # Display main menu
     main_menu()
-    
