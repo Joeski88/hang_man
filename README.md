@@ -129,7 +129,7 @@ The flowchart represents the logic of the application:
 
 - [random](https://docs.python.org/3/library/random.html) was used to implement pseudo-random word selection from word bank.
 - [os](https://docs.python.org/3/library/os.html) was used to clear the terminal before running the program.
-- [String](https://docs.python.org/3/library/string.html) ws used to read strings added into code.
+- [String](https://docs.python.org/3/library/string.html) processes standard strings in various ways in python.
 
 ##### Third-party imports:
 
@@ -146,6 +146,7 @@ The flowchart represents the logic of the application:
 - [Miro](https://miro.com/app/dashboard/) was used to make a flowchart for project planning and the README file.
 - [Gitpod](https://gitpod.io/workspaces) was used to create the workspaces.
 - [Heroku](https://id.heroku.com/) Used to deploy finished project.
+- [CIlintercheck](https://pep8ci.herokuapp.com/) Code institute Linter validator for python. Used to validate all python files.
 ---
 
 ## Bugs
@@ -225,6 +226,8 @@ The flowchart represents the logic of the application:
 ## Testing
 
 - Testing was carried out using the CI Linter check web page [CI Linter Validation](https://pep8ci.herokuapp.com/#)
+
+- Please see below for validation screen shots.
 
 ## Validation
 
