@@ -320,11 +320,11 @@ Create a local copy of the GitHub repository by following one of the two process
   14. Add 1 new Config Vars:
       - Key: PORT Value: 8000
       - *This Config was provided by [CODE INSTITUTE](https://codeinstitute.net/)*.
-      ![ConfigVars](documentation/deployment/config_vars.png)
+      - ![ConfigVars](documentation/deployment/config_vars.png)
   15. Go back to the Deploy tab.
   16. Click "Deploy Branch".
         - Wait for the completion of the deployment. 
-        ![Deploy](documentation/deployment/deploy.png)
+        - ![Deploy](documentation/deployment/deploy.png)
   17. Click "Open app" to launch the application inside a web page.
 
 
