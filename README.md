@@ -239,23 +239,13 @@ The flowchart represents the logic of the application:
 | Main Game | | | | | |
 | 1 Player Game | Play a solo game | Go through a solo game with no errors and all potential bugs thought about and dealt with | Yes | Yes | - |
 | 2 & 3 Player Game | Play a 2 or 3 player game | As above, however, each player is different colours and its clearly defined | Yes | Yes | - |
-| Game Ending | When a player either guesses the correct word or  | The user is redirected to the Twitter page | Yes | Yes | - |
-| YouTube icon in the footer | Click on the YouTube icon | The user is redirected to the YouTube page | Yes | Yes | - |
-| Home page | | | | | |
-| "Contact Us" button in Hero section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| "Contact Us" button in Call to action section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| Gallery page | | | | | |
-| "Contact Us" button in Hero section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| Image in the gallery | User hover the image | Pet's name and description appear on the image | Yes | Yes | - |
-| "Contact Us" button in Call to action section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| Contact page | | | | | |
-| First name input | Enter the first name | The first name is entered | Yes | Yes | If user doesn't enter the first name, the error message appears |
-| Last name input | Enter the last name | The last name is entered | Yes | Yes | If user doesn't enter the last name, the error message appears |
-| Email input | Enter the email | The email is entered | Yes | Yes | If user doesn't enter the email, the error message appears. If user enters not valid email, the error message appears |
-| Adopt and donate checkbox | Click on the checkbox | The checkbox is checked | Yes | Yes | These checkboxes are not required as the user can choose not to adopt or donate and other reasons for contacting |
-| "Submit" button | Click on the "Submit" button | The user is redirected to the response page | Yes | Yes | - |
-| Response page | | | | | |
-| Response message | The user will be automatically redirected to the home page after 10 seconds | The user is redirected to the home page | Yes | Yes | - |
+| Game Ending | When a player either guesses the correct word or runs out of guesses | The user is told if they won or lost, if they lost the word will be revealed | Yes | Yes | - |
+| Playing the game | Play the game, without issues | The game is played, the players amount of guesses and letters already guessed is clearly displayed along with the word your attempting to guess. The correct letters appear in the correct space and constantly on display | Yes | Yes | - |
+| Rules | | | | | |
+| List of rules | The rules are listed numerically, in a different color font | The user can gain a clear understanding of the game and how to play it | Yes | Yes | - |
+| Exit | | | | | |
+| Exit button | Select this menu option to leave the game | The user is given a goodbye message and the programme exits back to the python terminal | Yes | Yes | - |
+
 
 ## Deployment
 
@@ -290,7 +280,7 @@ Create a local copy of the GitHub repository by following one of the two process
   1. Install Python module dependencies:
      
       1. Navigate to the folder hang_man by executing the command:
-      - `cd hang_man` !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      - `cd hang_man`
       2. Run the command pip install -r requirements.txt
         - `pip3 install -r requirements.txt`
 
@@ -305,18 +295,23 @@ Create a local copy of the GitHub repository by following one of the two process
     - `git push`
   6. Create a Heroku account if you don't already have one here [Heroku](https://dashboard.heroku.com).
   7. Create a new Heroku application on the following page here [New Heroku App](https://dashboard.heroku.com/apps):
-  8. Go to the Deploy tab.
-  9. Link your GitHub account and connect the application to the repository you created.
+  8. Go to the Deploy tab. 
+      - ![Deploy](documentation/deployment/heroku_deploy_tab.png)
+  9. Link your GitHub account and connect the application to the repository you created. 
+      - ![github](documentation/deployment/deployment_method.png)
   10. Go to the Settings tab.
-  11. Click "Add buildpack".
+  11. Click "Add buildpack". 
   12. Add the Python and Node.js buildpacks in the following order.
-  13. Click "Reveal Config Vars."
+      - ![Buildpack](documentation/deployment/buildpacks.png)
+  13. Click "Reveal Config Vars." 
   14. Add 1 new Config Vars:
       - Key: PORT Value: 8000
       - *This Config was provided by [CODE INSTITUTE](https://codeinstitute.net/)*.
+      ![ConfigVars](documentation/deployment/config_vars.png)
   15. Go back to the Deploy tab.
   16. Click "Deploy Branch".
-        - Wait for the completion of the deployment.
+        - Wait for the completion of the deployment. 
+        ![Deploy](documentation/deployment/deploy.png)
   17. Click "Open app" to launch the application inside a web page.
 
 

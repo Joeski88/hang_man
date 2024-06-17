@@ -9,19 +9,21 @@ from player import Player
 init(autoreset=True)
 
 """ Create palatte for players colours """
-palettes = [{
-    'prompt': Fore.YELLOW,
-    'win': Fore.YELLOW + Back.CYAN,
-    'lose': Fore.RED + Back.BLACK,
-}, {
-    'prompt': Fore.GREEN,
-    'win': Fore.YELLOW + Back.GREEN,
-    'lose': Fore.BLACK + Back.RED,
-}, {
-    'prompt': Fore.BLUE,
-    'win': Fore.YELLOW + Back.GREEN,
-    'lose': Fore.BLACK + Back.RED,
-}]
+palettes = [
+    {
+        'prompt': Fore.YELLOW,
+        'win': Fore.YELLOW + Back.CYAN,
+        'lose': Fore.BLACK + Back.RED,
+    }, {
+        'prompt': Fore.GREEN,
+        'win': Fore.YELLOW + Back.GREEN,
+        'lose': Fore.BLACK + Back.RED,
+    }, {
+        'prompt': Fore.BLUE,
+        'win': Fore.YELLOW + Back.GREEN,
+        'lose': Fore.BLACK + Back.RED,
+    }
+]
 
 """ Store whitespace and invalid characters in input prompts. """
 punct = string.punctuation + " " 
