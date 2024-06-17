@@ -226,7 +226,17 @@ The flowchart represents the logic of the application:
 
 - Testing was carried out using the CI Linter check web page [CI Linter Validation](https://pep8ci.herokuapp.com/#)
 
-## Manual Testing
+## Validation
+
+### run.py Linter Validation
+
+![Screenshot](documentation/validation/run_validation.png)
+
+### player.py Linter Validation
+![Screenshot](documentation/validation/player_validation.png)
+
+### words.py Linter Validation
+![Screenshot](documentation/validation/words_validation.png)
 
 ## Manual testing
 

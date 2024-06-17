@@ -238,7 +238,7 @@ def run():
 
 
 def get_player_names():
-    print(Fore.GREEN + "Enter player name:" + Fore.WHITE)
+    print(Fore.GREEN + " Enter player name:" + Fore.WHITE)
     name = input()
 
     name = name.lstrip().rstrip()
