@@ -316,5 +316,9 @@ hangman hangs!!!\n
 
 if __name__ == "__main__":
     # Display main menu
-    mainMenu()
+    #mainMenu()
     
+
+
+    a = len("cp.letters_right = print_word(cp.random_word, cp.letters_guessed)")
+    print(a)
