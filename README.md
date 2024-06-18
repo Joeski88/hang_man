@@ -225,6 +225,10 @@ The flowchart represents the logic of the application:
 
 ## Testing
 
+- Debugging and testing during programme production was aided by adding in a test flag function
+
+- ![screenshot](documentation/validation/testflag.png)
+
 - Testing was carried out using the CI Linter check web page [CI Linter Validation](https://pep8ci.herokuapp.com/#)
 
 - Please see below for validation screen shots.

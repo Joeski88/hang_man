@@ -1,5 +1,6 @@
 """ Created player class """
 
+
 class Player():
     def __init__(self, firstname):
         self.name = firstname.upper()
